@@ -3,7 +3,7 @@ async function resetpswdd(){
     let mail=document.getElementById("email").value;
     let password=document.getElementById("pwd").value;
    
-    axios.put( `http://192.168.1.2:8081/user/updatepassword/${mail}/${password}`)
+    axios.put( `https://screensagadb.up.railway.app/user/updatepassword/${mail}/${password}`)
     .then(response => {
         console.log('Success:', response.data);
         if(response.data){
