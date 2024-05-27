@@ -1,0 +1,35 @@
+{
+    "lists":[
+        {
+            "id":1,
+            "name":"Game Changer",
+            "category":"movie",
+            "image":"https://static.tnn.in/thumb/msid-108631914,thumbsize-204418,width-1280,height-720,resizemode-75/108631914.jpg"
+            
+        },
+        {
+            "id":2,
+            "name":"Pushpa-The Rule",
+            "category":"movie",
+            "image":"https://www.livemint.com/lm-img/img/2024/04/07/1600x900/pushpa2_1712509890360_1712509899436.PNG"
+        },
+        {
+            "id":3,
+            "name":"Peaky Blinders",
+            "category":"webseries",
+            "image":"https://i.pinimg.com/originals/75/7a/10/757a10d827c5bb511e033eedbb15320b.jpg"
+        },
+        {
+            "id":4,
+            "name":"Manjummel Boys",
+            "category":"webseries",
+            "image":"https://static.toiimg.com/thumb/msid-108198049,width-1280,height-720,resizemode-4/108198049.jpg"
+        },
+        {
+            "id":5,
+            "name":"From",
+            "category":"webseries",
+            "image":"https://ntvb.tmsimg.com/assets/p20959089_b_h10_af.jpg?w=960&h=540"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+
+localapi:  http://localhost:3000/lists?id=2&category=movie
+&api_key=bcf371704c5b5986177c0d72527ae0a6
+Error Reports:
+add "logging.level.org.springframework.boot.autoconfigure=ERROR" to avoid error
+
+<button className="btn btn-danger" type="button">Search</button>
+
+for signupform:
+// {
+         //    login ? 
+         //    : <Loginform />
+         // }
+to send the mail we need to set app passwords in our gmail account and use that password in application propoerties but not the original password
+my system ip:192.168.1.2

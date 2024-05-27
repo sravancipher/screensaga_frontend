@@ -3,21 +3,26 @@ async function resetpswdd(){
     let mail=document.getElementById("email").value;
     let password=document.getElementById("pwd").value;
    
-    axios.put( `http://localhost:8081/user/updatepassword/${mail}/${password}`)
+    axios.put( `http://192.168.1.2:8081/user/updatepassword/${mail}/${password}`)
     .then(response => {
         console.log('Success:', response.data);
-        alert('Password reset link sent successfully.');
+        if(response.data){
+            
+            alert('Password Updated Successfully. Login Again');
+            setTimeout(()=>{},3000)
+        }
+        else{
+            alert("The email address provided does not correspond to an existing account")
+            setTimeout(()=>{},3000)
+        }
     })
+    
     .catch(error => {
         console.error('Error:', error);
         alert('An error occurred while sending the reset link.');
+        setTimeout(()=>{},3000)
     });
         console.log("response",res)
-        if(res.data){
-            document.getElementById("result").innerHTML="Password Updated Successfully. Login Again"
-        }else{
-            document.getElementById("result").innerHTML="Account with this mail does not exists"
-        }
     }
     
     

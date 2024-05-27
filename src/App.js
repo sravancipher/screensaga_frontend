@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Landing from './Landing';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap'
+import './App.css'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return(
+    <>
+    {
+      <Landing />
+    }
+    
+    
+    </>
+    
+  )
 }
 
 export default App;
+// File: App.js
+// import React, { useState } from 'react';
+
+// const ReplacementComponent = () => {
+//   return (
+//     <div>
+//       <h2>Replaced Component</h2>
+//       <p>This component has replaced the original one.</p>
+//     </div>
+//   );
+// };
+
+// const ClickableComponent = () => {
+//   const [isReplaced, setIsReplaced] = useState(false);
+
+//   const handleClick = () => {
+//     setIsReplaced(true);
+//   };
+
+//   if (isReplaced) {
+//     return <ReplacementComponent />;
+//   }
+
+//   return (
+//     <div onClick={handleClick}>
+//       <h2>Original Component</h2>
+//       <p>Click me to replace me with another component.</p>
+//     </div>
+//   );
+// };
+
+// const App = () => {
+//   return (
+//     <div className="App">
+//       <ClickableComponent />
+//     </div>
+//   );
+// };
+
+// export default App;
