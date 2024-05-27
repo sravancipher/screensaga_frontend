@@ -45,6 +45,7 @@ function Changepswd({setforgotpassword}){
                 {
                   pswdupdate?<h5 class="text-success">{pswddata}</h5>:<h5 class="text-danger">{pswddata}</h5>
                  }
+                 <span type="button" className="text-primary" onClick={()=>setforgotpassword}>Sign In?</span>
             <div className="d-grid">
             <button type="submit" className="btn btn-danger">Update Password</button>
             </div>
