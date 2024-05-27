@@ -47,7 +47,7 @@ function Changepswd({setforgotpassword}){
                  }
                  <span type="button" className="text-primary mb-3" onClick={()=>setforgotpassword()}>Sign In?</span>
             <div className="d-grid">
-            <button type="submit" className="btn btn-danger">Update Password</button>
+            <button type="submit" className="btn btn-danger">Get Password Reset Link</button>
             </div>
           </form>
           </div>
