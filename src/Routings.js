@@ -126,14 +126,19 @@ function Menubar({watchlistdata,removewatchlist}){
   function searchfn(e) {
     setSearchInput(e.target.value);
     e.preventDefault();
-    if (movies.includes(e.target.value)) {
-      setOpData("Movie Available");
-      setInput(true);
+    if(searchinput.length>0){
+      if (movies.includes(e.target.value)) {
+      
+        setOpData("Movie Available");
+        setInput(true);
+      }
+      else {
+        setOpData("Movie not available");
+        setInput(false);
+      }
     }
-    else {
-      setOpData("Movie not available");
-      setInput(false);
-    }
+    
+    
   }
     
   // useEffect(()=>{
