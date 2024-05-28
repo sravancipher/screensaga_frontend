@@ -120,10 +120,10 @@ function Menubar({watchlistdata,removewatchlist}){
     e.preventDefault();
     setSearchInput(e.target.value);
     }
-  useEffect(()=>{
-    ele.addEventListener("mousedown",setInput(true))
-    ele.addEventListener("mouseup",setInput(false))
-  })
+  // useEffect(()=>{
+  //   ele.addEventListener("mousedown",setInput(true))
+  //   ele.addEventListener("mouseup",setInput(false))
+  // })
     return(
         <>
         <div className='d-flex'>
