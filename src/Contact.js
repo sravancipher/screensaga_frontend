@@ -22,11 +22,13 @@ function Contact(){
     }
     return(
         <>
+        <h3 className="bg-danger" style={{textAlign:"center"}}>Reach Us</h3>
           <div className="container">
           <div className="row">
+
             <div className="col-md-3 col-1"></div>
             <div className="col-md-6 col-10">
-            <h3 className="bg-danger" style={{textAlign:"center"}}>Reach Us</h3>
+            
              <form onSubmit={addcomment} method="post">
              <div className="form-floating mb-3 mt-3">
              <input type="email" className="form-control" placeholder="Enter your mail" id="mail"value={userobj.mail} required readOnly/>
