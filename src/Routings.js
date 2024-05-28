@@ -114,7 +114,7 @@ function Routings(){
 function Menubar({watchlistdata,removewatchlist}){
   const[input,setInput]=useState();
   const[searchinput,setSearchInput]=useState("");
-  const[opdata,setOpData]=useState("");
+  const[opdata,setOpData]=useState();
   const ele=useRef();
   // function searchfn(e){
   //   setInput(true);
