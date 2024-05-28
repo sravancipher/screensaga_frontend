@@ -144,7 +144,7 @@ function Menubar({watchlistdata,removewatchlist}){
             
             <form >
               <input className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
-              {input&&<div className="text-light" style={{position:"relative",zIndex:"2"}}>{searchinput}</div>}
+              {input&&<div className="text-light m-2" style={{textAlign:"center",position:"absolute",top:"100px",zIndex:"2"}}>{searchinput}</div>}
             </form>
           </div>
         </div>
