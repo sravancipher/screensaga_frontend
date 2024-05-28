@@ -115,12 +115,25 @@ function Menubar({watchlistdata,removewatchlist}){
   const[input,setInput]=useState(false);
   const[searchinput,setSearchInput]=useState("");
   const ele=useRef();
-  function searchfn(e){
-    setInput(true);
-    e.preventDefault();
-    setSearchInput(e.target.value);
+  // function searchfn(e){
+  //   setInput(true);
+  //   e.preventDefault();
+  //   setSearchInput(e.target.value);
     
+  //   }
+  let movies="rrrdevara"
+  function searchfn(e) {
+    e.preventDefault();
+    if (movies.includes(e.target.value)) {
+      setSearchInput("Movie Available");
+      setInput(true);
     }
+    else {
+      setSearchInput("Movie not available");
+      setInput(false);
+    }
+  }
+    
   // useEffect(()=>{
   //   ele.addEventListener("mousedown",setInput(true))
   //   ele.addEventListener("mouseup",setInput(false))
