@@ -9,6 +9,7 @@ import useApi from './useApi';
 import { watchlaterdbdata } from './Routings';
 import { getting2movies } from './getting2movies';
 import Contact from './Contact';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 function Home() {
     const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
     const [more1, setMore1] = useState(false);
@@ -71,8 +72,8 @@ function Home() {
                 </div>
                 <Contact/>
                 {showScrollTop && (
-                    <button className="scroll-top" onClick={scrollToTop}>
-                      ↑ Go to Top
+                    <button  onClick={scrollToTop}>
+                    <ArrowCircleUpIcon/>
                     </button>
                   )}
             </div>
