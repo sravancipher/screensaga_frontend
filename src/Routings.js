@@ -114,6 +114,7 @@ function Routings(){
 function Menubar({watchlistdata,removewatchlist}){
   const[input,setInput]=useState(false);
   const[searchinput,setSearchInput]=useState("");
+  const[opdata,setOpData]=useState("");
   const ele=useRef();
   // function searchfn(e){
   //   setInput(true);
@@ -123,13 +124,14 @@ function Menubar({watchlistdata,removewatchlist}){
   //   }
   let movies="rrrdevara"
   function searchfn(e) {
+    setSearchInput(e.target.value);
     e.preventDefault();
     if (movies.includes(e.target.value)) {
-      setSearchInput("Movie Available");
+      setOpData("Movie Available");
       setInput(true);
     }
     else {
-      setSearchInput("Movie not available");
+      setOpData("Movie not available");
       setInput(false);
     }
   }
@@ -162,7 +164,7 @@ function Menubar({watchlistdata,removewatchlist}){
             
             <form >
               <input ref={ele} className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
-              {input&&<div className="text-success p-2 mt-2" style={{borderRadius:"5px",wordWrap:"break-word",minWidth:"220px",maxWidth:"220px",textAlign:"center",position:"absolute",zIndex:"2",borderColor:"white",border:"2px solid"}}>{searchinput}</div>}
+              {input?<div className="text-success p-2 mt-2" style={{borderRadius:"5px",wordWrap:"break-word",minWidth:"220px",maxWidth:"220px",textAlign:"center",position:"absolute",zIndex:"2",borderColor:"white",border:"2px solid"}}>{searchinput}</div>:<div className="text-danger p-2 mt-2" style={{borderRadius:"5px",wordWrap:"break-word",minWidth:"220px",maxWidth:"220px",textAlign:"center",position:"absolute",zIndex:"2",borderColor:"white",border:"2px solid"}}>{searchinput}</div>}
             </form>
           </div>
         </div>
