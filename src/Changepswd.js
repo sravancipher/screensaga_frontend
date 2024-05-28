@@ -5,7 +5,7 @@ function Changepswd({setforgotpassword}){
     const [user_mail,setMail]=useState("");
     const[pswdupdate,checkPswdUpdate]=useState(false);
     const [user_pswd,setPassword]=useState("");
-    async function handleSignUp(e){
+    async function handleMail(e){
         
         e.preventDefault();
       let url=`https://screensagadb.up.railway.app/user/sendmail/${user_mail}`;
@@ -35,7 +35,7 @@ function Changepswd({setforgotpassword}){
     return(
         <>
         <div className="container mt-5">
-        <form onSubmit={handleSignUp} >
+        <form onSubmit={handleMail} >
         <div className="form-floating mb-3 mt-3">
         <input type="email" className="form-control" placeholder="Enter your mail" id="mail"value={user_mail} required onChange={(e)=>{
             setMail(e.target.value)
