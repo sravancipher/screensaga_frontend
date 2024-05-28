@@ -8,7 +8,6 @@ import More from './More';
 import useApi from './useApi';
 import { watchlaterdbdata } from './Routings';
 import { getting2movies } from './getting2movies';
-import Feedback from './Contact';
 import Contact from './Contact';
 function Home() {
     const watchdata = useContext(watchlaterdbdata);
