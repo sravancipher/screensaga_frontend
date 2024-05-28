@@ -10,7 +10,7 @@ import { watchlaterdbdata } from './Routings';
 import { getting2movies } from './getting2movies';
 import Contact from './Contact';
 function Home() {
-    const watchdata = useContext(watchlaterdbdata);
+    const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
     const [more1, setMore1] = useState(false);
     const [more2, setMore2] = useState(false);
     let list1 = useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
@@ -70,6 +70,11 @@ function Home() {
                     }
                 </div>
                 <Contact/>
+                {showScrollTop && (
+                    <button className="scroll-top" onClick={scrollToTop}>
+                      ↑ Go to Top
+                    </button>
+                  )}
             </div>
         </>
     )

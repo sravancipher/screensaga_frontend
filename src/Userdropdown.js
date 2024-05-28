@@ -46,7 +46,7 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
   // }
   return (
     <>
-      <span className="user-btn bg-dark pt-2 fixed-top" style={{ color: "orangered" }} data-bs-toggle="offcanvas" data-bs-target="#useroffcanvas"><AccountCircleIcon sx={{ fontSize: "40px" }} /></span>
+      <span className="user-btn bg-dark pt-2" style={{ color: "orangered" }} data-bs-toggle="offcanvas" data-bs-target="#useroffcanvas"><AccountCircleIcon sx={{ fontSize: "40px" }} /></span>
       <div class="offcanvas offcanvas-end text-bg-dark" id="useroffcanvas" >
 
         <div class="offcanvas-header">

@@ -4,7 +4,6 @@ import Home from './Home'
 import Movies from './Movies'
 import Webseries from './Webseries'
 import Tv from './Tv'
-import Sports from './Sports'
 import Userdropdown from './Userdropdown'
 import { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
@@ -16,6 +15,30 @@ function Routings(){
   const[detectwatchlist,setDetectWatchList]=useState(false);
   const[watchlistdata,setWatchListData]=useState([]);  //to display in watch later list
   const [removedmovie,setRemovedMovie] = useState();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) { // Change 300 to the scroll position where your navbar disappears
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+
+    
+
+  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   //for card component add to watch later functionality
   async function addwatchlist(e,movie_name,movie_image){
     
@@ -72,7 +95,7 @@ function Routings(){
         <>
          <BrowserRouter>
          <Menubar watchlistdata={watchlistdata} removewatchlist={removewatchlist}/>
-         <watchlaterdbdata.Provider value={{watchlistdata,addwatchlist,removewatchlist}}>
+         <watchlaterdbdata.Provider value={{watchlistdata,addwatchlist,removewatchlist,showScrollTop,scrollToTop}}>
           <Routes>
           
           <Route exact path='/' element={<Home/>}/>
