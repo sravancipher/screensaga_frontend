@@ -7,8 +7,8 @@ function Contact(){
     async function addcomment(e){
       e.preventDefault();
       axios.post(`https://screensagadb.up.railway.app/user/addcomment` ,{
-        user_mail: userobj.mail,
-        user_pswd: comment
+        usermail: userobj.mail,
+        userpswd: comment
      }, {
         header: {
            'Content-Type': 'application/json'
