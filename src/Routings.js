@@ -93,7 +93,7 @@ function Menubar({watchlistdata,removewatchlist}){
     return(
         <>
         <div className='d-flex'>
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1" style={{borderBottom: "none"}}>
+        <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top flex-grow-1" style={{borderBottom: "none"}}>
         <div className="container-fluid ">
           <a className="navbar-brand   text-light " href="/" style={{fontFamily:"lucida handwriting"}}>ScreenSaga</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar" aria-controls="mynavbar" aria-expanded="false">
