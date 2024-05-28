@@ -8,7 +8,6 @@ function Changepswd({setforgotpassword}){
         e.preventDefault();
       let url=`https://screensagadb.up.railway.app/user/sendmail/${user_mail}`;
         let res=await axios.put(url,{
-            
               header:{
                  'Content-Type':'application/json'
               }
