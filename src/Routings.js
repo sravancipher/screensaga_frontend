@@ -126,8 +126,10 @@ function Menubar({watchlistdata,removewatchlist}){
   function searchfn(e) {
     setSearchInput(e.target.value);
     e.preventDefault();
-    if(searchinput.length>0){
-      if (movies.includes(e.target.value)) {
+    if(e.target.value.length==0){
+      setOpData("");
+    }
+      else if (movies.includes(e.target.value)) {
       
         setOpData("Movie Available");
         setInput(true);
@@ -136,7 +138,7 @@ function Menubar({watchlistdata,removewatchlist}){
         setOpData("Movie not available");
         setInput(false);
       }
-    }
+    
     
     
   }
