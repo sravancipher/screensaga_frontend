@@ -15,7 +15,7 @@ function Signupform({ changetologin }) {
       e.preventDefault();
       // let res = await axios.post("https://screensagadb.up.railway.app/user/signup", {
          // http://localhost:8081/user/login/sravanpotnuru2@gmail.com/sra11
-         let res = await axios.post("http://localhost:8081/user/signup", {
+         let res = await axios.post("https://screensagadb.up.railway.app/user/signup", {
          user_name: name,
          user_mail: mail,
          user_pswd: password

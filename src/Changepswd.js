@@ -8,7 +8,7 @@ function Changepswd({setforgotpassword}){
     async function handleMail(e){
         
         e.preventDefault();
-      let url=`http://localhost:8081/user/sendmail/${user_mail}`;
+      let url=`https://screensagadb.up.railway.app/user/sendmail/${user_mail}`;
         let res=await axios.put(url,{
             
               header:{

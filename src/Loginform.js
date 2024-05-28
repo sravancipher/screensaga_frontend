@@ -16,7 +16,7 @@ function Loginform({changetosignup}){
     async function handleSignUp(e){
         e.preventDefault();
       
-       let url=`http://localhost:8081/user/login/${user_mail}/${user_pswd }`
+       let url=`https://screensagadb.up.railway.app/user/login/${user_mail}/${user_pswd }`
         let res=await axios.get(url,{
             
               header:{

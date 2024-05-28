@@ -26,7 +26,7 @@ function Routings(){
     // setWatchListData((previtems)=>[...previtems,new_movie])
     // console.log("data added to db",watchlistdata)
     // await axios.post("https://screensagadb.up.railway.app/user/addwatchlist",{
-      await axios.post("http://localhost:8081/user/addwatchlist",{
+      await axios.post("https://screensagadb.up.railway.app/user/addwatchlist",{
        user_mail:userobj.mail,
        movie_name:movie_name,
        movie_image:movie_image,
@@ -50,7 +50,7 @@ function Routings(){
         getwatchlist()
     },[detectwatchlist])
     async function getwatchlist(){
-      await axios.get(`http://localhost:8081/user/getwatchlist/${userobj.mail}`,{
+      await axios.get(`https://screensagadb.up.railway.app/user/getwatchlist/${userobj.mail}`,{
               header:{
                  'Content-Type':'application/json'
               }
@@ -63,7 +63,7 @@ function Routings(){
     }
     async function removewatchlist(e, movie, mail) {
       e.preventDefault();
-      let res = await axios.delete(`http://localhost:8081/user/deletewatchlist/${mail}/${movie}`);
+      let res = await axios.delete(`https://screensagadb.up.railway.app/user/deletewatchlist/${mail}/${movie}`);
         setRemovedMovie(res.data);
         setDetectWatchList(!detectwatchlist)
       console.log("deleted data",removedmovie);
