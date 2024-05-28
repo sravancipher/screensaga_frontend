@@ -112,6 +112,13 @@ function Routings(){
 }
 
 function Menubar({watchlistdata,removewatchlist}){
+  const[input,setInput]=useState(false);
+  const[searchinput,setSearchInput]=useState("");
+  function searchfn(e){
+    setInput(true);
+    e.preventDefault();
+    setSearchInput(e.target.value);
+    }
   
     return(
         <>
@@ -136,14 +143,11 @@ function Menubar({watchlistdata,removewatchlist}){
             </ul>
             
             <form >
-              <input className="form-control me-2 bg-light " type="text" placeholder="Search"/>
+              <input className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
+              {input&&<div style={{height:"40px",width:"100px",zIndex:"2"}}>searchinput</div>}
             </form>
-            
-            
           </div>
-          
         </div>
-        
       </nav>
       <Userdropdown watchlistdata={watchlistdata} removewatchlist={removewatchlist}/>
       </div>
