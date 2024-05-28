@@ -32,7 +32,7 @@ function Card({ image, name, key }) {
                     <p className='text-light mx-2' style={{ minHeight: "50px", textAlign: "center", alignContent: "center" }}>{name} </p>
                 </div>
                 <div className='d-grid gap-2 '>
-                    <button className='btn btn-success' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Watch Now <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></button>
+                    <button className='btn' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Watch Now <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></button>
                     {
                         moviestring.includes(name) ? <button className='btn btn-danger' onClick={(e) => { removewatchlist(e, name, userobj.mail) }}>Remove From Watch Later <DeleteIcon sx={{ fontSize: "20px", marginBottom: "3px" }} /></button>
                             : <button className='btn btn-success' onClick={(e)=>addwatchlist(e,name,image)}>Add To Watch Later <AddCircleIcon sx={{ fontSize: "20px", marginBottom: "4px" }} /></button>
