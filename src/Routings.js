@@ -19,7 +19,7 @@ function Routings(){
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) { // Change 300 to the scroll position where your navbar disappears
+      if (window.scrollY > 100) { // Change 300 to the scroll position where your navbar disappears
         setShowScrollTop(true);
       } else {
         setShowScrollTop(false);
