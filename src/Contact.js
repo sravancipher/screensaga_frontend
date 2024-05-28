@@ -22,7 +22,7 @@ function Contact(){
     }
     return(
         <>
-        <h3 className="bg-danger p-1" style={{textAlign:"center",borderRadius:"3px"}}>Reach Us</h3>
+        <h3 className="bg-danger p-1" style={{textAlign:"center",borderRadius:"4px"}}>Reach Us</h3>
           <div className="container">
           <div className="row">
 
