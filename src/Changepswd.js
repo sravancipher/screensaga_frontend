@@ -3,8 +3,6 @@ import { useState } from "react";
 function Changepswd({setforgotpassword}){
     const[pswddata,setPswdData]=useState("");
     const [user_mail,setMail]=useState("");
-    const[pswdupdate,checkPswdUpdate]=useState(false);
-    const [user_pswd,setPassword]=useState("");
     async function handleMail(e){
         
         e.preventDefault();
@@ -20,7 +18,6 @@ function Changepswd({setforgotpassword}){
       //   .catch(err=>{console.log("error"+err)})
         console.log(res.data)
         if(res.data){
-         checkPswdUpdate(true);
          setPswdData("An email notification regarding your password update has been sent to your registered email address")
          setTimeout(() => {
             setforgotpassword();
