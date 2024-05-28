@@ -164,7 +164,7 @@ function Menubar({watchlistdata,removewatchlist}){
             
             <form >
               <input ref={ele} className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
-              {input?<h5 class="mt-2 text-success" style={{textAlign:"center"}}>{opdata}</h5>:<h5 class="mt-2 text-danger" style={{textAlign:"center"}}>{opdata}</h5>}
+              {input?<h5 class="mt-2 text-success" style={{textAlign:"center",position:"absolute"}}>{opdata}</h5>:<h5 class="mt-2 text-danger" style={{textAlign:"center",position:"absolute"}}>{opdata}</h5>}
             </form>
           </div>
         </div>
