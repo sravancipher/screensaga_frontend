@@ -35,8 +35,8 @@ function Contact(){
              <label className="form-label text-secondary" htmlFor="mail"><b>Email</b></label>
              </div>
              <div className="form-floating mb-3 mt-3">
-              <textarea rows="6" cols="6" className="form-control" placeholder="Write Us" id="write" required value={comment} onChange={()=>{setComment(comment)}}></textarea>
-              <label htmlFor="write" className="form-labe">Write to us</label>
+              <textarea rows="6" cols="6" className="form-control text-dark" placeholder="Write Us" id="write" required value={comment} onChange={()=>{setComment(comment)}}></textarea>
+              <label htmlFor="write" className="form-labe text-dark">Write to us</label>
              </div>
              <div className="d-grid">
             <button type="submit" className="btn btn-success" style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Submit</button>
