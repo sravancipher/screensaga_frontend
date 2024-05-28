@@ -9,6 +9,7 @@ import More from './More';
 import Continue from './Continue';
 import useApi from './useApi';
 import { getting2movies } from './getting2movies';
+import Contact from './Contact';
 function Movies(){
     const [more1,setMore1]=useState(false);
     const [more2,setMore2]=useState(false);
@@ -67,6 +68,8 @@ function Movies(){
                     <div className='row'><p className='btn text-primary float-end' style={{textAlign:"end"}} onClick={()=>setMore2(true)}>See More?</p></div></>
                    }
                    </div>
+                   <Contact/>
+                   
             </div>
         </>
     )
