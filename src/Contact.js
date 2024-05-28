@@ -8,7 +8,7 @@ function Contact(){
       e.preventDefault();
       axios.post(`https://screensagadb.up.railway.app/user/addcomment` ,{
         usermail: userobj.mail,
-        userpswd: comment
+        usercomment: comment
      }, {
         header: {
            'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ function Contact(){
     }
     return(
         <>
-        <h3 className="bg-danger p-1" style={{textAlign:"center",borderRadius:"4px"}}>Reach Us</h3>
+        <h3 className="bg-danger p-1" style={{textAlign:"center",borderRadius:"6px"}}>Reach Us</h3>
           <div className="container">
           <div className="row">
 
