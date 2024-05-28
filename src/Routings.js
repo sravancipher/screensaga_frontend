@@ -5,7 +5,7 @@ import Movies from './Movies'
 import Webseries from './Webseries'
 import Tv from './Tv'
 import Userdropdown from './Userdropdown'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { userobjcontext } from './Landing'
 export const watchlaterdbdata=createContext();
@@ -114,12 +114,16 @@ function Routings(){
 function Menubar({watchlistdata,removewatchlist}){
   const[input,setInput]=useState(false);
   const[searchinput,setSearchInput]=useState("");
+  const ele=useRef();
   function searchfn(e){
     setInput(true);
     e.preventDefault();
     setSearchInput(e.target.value);
     }
-  
+  useEffect(()=>{
+    ele.addEventListener("mousedown",setInput(true))
+    ele.addEventListener("mouseup",setInput(false))
+  })
     return(
         <>
         <div className='d-flex'>
@@ -143,7 +147,7 @@ function Menubar({watchlistdata,removewatchlist}){
             </ul>
             
             <form >
-              <input className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
+              <input ref={ele} className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
               {input&&<div className="text-success p-2 mt-2" style={{borderRadius:"2px",wordWrap:"break-word",minWidth:"220px",maxWidth:"220px",textAlign:"center",position:"absolute",zIndex:"2",borderColor:"white",border:"2px solid"}}>{searchinput}</div>}
             </form>
           </div>
