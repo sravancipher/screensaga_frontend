@@ -8,7 +8,7 @@ function Contact(){
           <div className="row">
             <div className="col-md-3 col-1"></div>
             <div className="col-md-6 col-10">
-            <h4 styke={{textAlign:"center"}}>Reach Us</h4>
+            <h4 style={{textAlign:"center"}}>Reach Us</h4>
              <form>
              <div className="form-floating mb-3 mt-3">
              <input type="email" className="form-control" placeholder="Enter your mail" id="mail"value={userobj.mail} required readOnly/>
@@ -19,7 +19,7 @@ function Contact(){
               <label htmlFor="write" className="form-labe">Write to us</label>
              </div>
              <div className="d-grid">
-            <button type="submit" className="btn" style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Submit</button>
+            <button type="submit" className="btn btn-success" style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Submit</button>
             </div>
              </form>
             </div>
