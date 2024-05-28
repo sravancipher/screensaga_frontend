@@ -13,3 +13,5 @@ for signupform:
          // }
 to send the mail we need to set app passwords in our gmail account and use that password in application propoerties but not the original password
 my system ip:192.168.1.2
+
+login:// let url=`https://screensagadb.up.railway.app/user/login/${user_mail}/${user_pswd}`;

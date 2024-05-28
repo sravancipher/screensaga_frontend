@@ -8,7 +8,7 @@ function Changepswd({setforgotpassword}){
     async function handleMail(e){
         
         e.preventDefault();
-      let url=`https://screensagadb.up.railway.app/user/sendmail/${user_mail}`;
+      let url=`http://localhost:8081/user/sendmail/${user_mail}`;
         let res=await axios.put(url,{
             
               header:{
@@ -24,7 +24,7 @@ function Changepswd({setforgotpassword}){
          setPswdData("An email notification regarding your password update has been sent to your registered email address")
          setTimeout(() => {
             setforgotpassword();
-          }, 3000);
+          }, 6000);
          }
             // else{
             //    setPswdData("Account with this mail is not exist")

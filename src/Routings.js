@@ -25,7 +25,8 @@ function Routings(){
     // const new_movie={name:movie_name,image:movie_image};
     // setWatchListData((previtems)=>[...previtems,new_movie])
     // console.log("data added to db",watchlistdata)
-    await axios.post("https://screensagadb.up.railway.app/user/addwatchlist",{
+    // await axios.post("https://screensagadb.up.railway.app/user/addwatchlist",{
+      await axios.post("http://localhost:8081/user/addwatchlist",{
        user_mail:userobj.mail,
        movie_name:movie_name,
        movie_image:movie_image,
@@ -49,7 +50,7 @@ function Routings(){
         getwatchlist()
     },[detectwatchlist])
     async function getwatchlist(){
-      await axios.get(`https://screensagadb.up.railway.app/user/getwatchlist/${userobj.mail}`,{
+      await axios.get(`http://localhost:8081/user/getwatchlist/${userobj.mail}`,{
               header:{
                  'Content-Type':'application/json'
               }
@@ -62,7 +63,7 @@ function Routings(){
     }
     async function removewatchlist(e, movie, mail) {
       e.preventDefault();
-      let res = await axios.delete(`https://screensagadb.up.railway.app/user/deletewatchlist/${mail}/${movie}`);
+      let res = await axios.delete(`http://localhost:8081/user/deletewatchlist/${mail}/${movie}`);
         setRemovedMovie(res.data);
         setDetectWatchList(!detectwatchlist)
       console.log("deleted data",removedmovie);
@@ -76,7 +77,7 @@ function Routings(){
           
           <Route exact path='/' element={<Home/>}/>
           <Route path='/movies' element={<Movies/>}></Route>
-          <Route exact path='/webseries' element={<Webseries/>}></Route>
+          <Route path='/webseries' element={<Webseries/>}></Route>
           <Route path='/tv' element={<Tv/>}></Route>
           
           </Routes>  
@@ -94,7 +95,7 @@ function Menubar({watchlistdata,removewatchlist}){
         <div className='d-flex'>
         <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1" style={{borderBottom: "none"}}>
         <div className="container-fluid ">
-          <a className="navbar-brand  text-light " style={{fontFamily:"lucida handwriting"}}>ScreenSaga</a>
+          <a className="navbar-brand   text-light " href="/" style={{fontFamily:"lucida handwriting"}}>ScreenSaga</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar" aria-controls="mynavbar" aria-expanded="false">
             <span className="navbar-toggler-icon"></span>
           </button>
