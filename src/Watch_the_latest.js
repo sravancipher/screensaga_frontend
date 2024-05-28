@@ -12,7 +12,7 @@ function Watch_the_latest({ name, image,ht,t }) {
                 <div className='card-img-overlay mt-sm-5' style={{ top:t }}>
                     <p className='card-title text-light'>{name}</p>
                     
-                        <button className='styledbtn btn text-light' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Watch Now <PlayCircleFilledIcon/></button>
+                        <button className='btn text-light' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Watch Now <PlayCircleFilledIcon/></button>
                     
                 </div>
             </div>

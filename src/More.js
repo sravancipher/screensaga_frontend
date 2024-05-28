@@ -21,7 +21,7 @@ function More({fn,url}){
           }       
          
         </div>
-        <div className='row'><p className='btn text-primary float-end' style={{textAlign:"end"}} onClick={()=>fn()}>See Less?</p></div>
+        <div className='row'><p className='btn text-primary float-end' style={{textAlign:"end"}} onClick={()=>fn()}>See Less</p></div>
         </>
     )
 }
