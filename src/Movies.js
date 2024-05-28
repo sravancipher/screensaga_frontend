@@ -4,13 +4,16 @@ import polimera2 from './images/polimera2.jpg'
 import rrr from './images/rrr.jpg'
 import Watch_the_latest from './Watch_the_latest';
 import Card from './Card';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import More from './More';
 import Continue from './Continue';
 import useApi from './useApi';
 import { getting2movies } from './getting2movies';
 import Contact from './Contact';
+import { watchlaterdbdata } from './Routings';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 function Movies(){
+    const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
     const [more1,setMore1]=useState(false);
     const [more2,setMore2]=useState(false);
     function setless1(){
@@ -69,7 +72,11 @@ function Movies(){
                    }
                    </div>
                    <Contact/>
-                   
+                   {showScrollTop && (
+                    <span  type="button" className="text-danger" onClick={scrollToTop}>
+                    <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
+                    </span>
+                  )}
             </div>
         </>
     )

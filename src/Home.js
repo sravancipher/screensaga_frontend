@@ -72,7 +72,7 @@ function Home() {
                 </div>
                 <Contact/>
                 {showScrollTop && (
-                    <span  className="text-danger" onClick={scrollToTop}>
+                    <span  type="button" className="text-danger" onClick={scrollToTop}>
                     <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                     </span>
                   )}
