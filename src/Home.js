@@ -10,6 +10,7 @@ import { watchlaterdbdata } from './Routings';
 import { getting2movies } from './getting2movies';
 import Contact from './Contact';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import Joyride from 'react-joyride';
 function Home() {
     const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
     const [more1, setMore1] = useState(false);
@@ -29,12 +30,10 @@ function Home() {
     function setless2() {
         setMore2(false);
     }
-
-
-
     return (
-        <>
-            <div className='bg-dark py-4 text-light'>
+            <>
+            
+            <div className='bg-dark py-4 text-light '>
                 <div className='container '>
                     <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                         <div className='col-md-6 text-light'>

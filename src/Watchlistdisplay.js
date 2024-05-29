@@ -21,7 +21,7 @@ function Watchlistdisplay({ watchlistdata, setwatchlist,removewatchlist }) {
             <div className="row">
                 <div className="d-flex justify-content-between my-3">
                     <h3 >Your Watch List</h3>
-                    <button type="button" class="btn-close text-bg-danger mt-1" onClick={() => setwatchlist()}></button>
+                    
                 </div>
                 {
 

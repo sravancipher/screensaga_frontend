@@ -4,6 +4,7 @@ import './Signup.css'
 import { useState } from 'react'
 import Loginform from './Loginform.js'
 import axios from 'axios'
+import Joyride from 'react-joyride'
 function Signupform({ changetologin }) {
    const [signup, checkSignUp] = useState(false);
    const [signupdata, setSignUpData] = useState("");
@@ -31,6 +32,8 @@ function Signupform({ changetologin }) {
       if (res.data) {
          checkSignUp(false);
          setSignUpData("Sign Up Succesfull, you will be redirected to the login page")
+         localStorage.setItem(mail, false);
+         console.log("localstorage dataf rom signup",localStorage.getItem(mail));
          setTimeout(() => {
             changetologin();
          }, 3000);
@@ -41,15 +44,15 @@ function Signupform({ changetologin }) {
       }
 
    }
+   
    return (
       <>
-         
          <form onSubmit={handleSignUp}>
                <div className="form-floating mb-3 mt-3 ">
                   <input type="text" className="form-control" placeholder="Enter your name" id="name" name="user_name" value={name} required onChange={(e) => {
                      setName(e.target.value)
                   }}></input>
-                  <label className="form-label text-secondary " htmlFor="name"><b>Username</b></label>
+                  <label className="form-label text-secondary" htmlFor="name"><b>Username</b></label>
                </div>
                <div className="form-floating mb-3 mt-3">
                   <input type="email" className="form-control" placeholder="Enter your mail" id="mail" name="user_mail" value={mail} required onChange={(e) => {
@@ -74,7 +77,7 @@ function Signupform({ changetologin }) {
                   <button type="submit" className="btn btn-danger" >Sign Up</button>
                </div>
             </form> 
-         
+            
             
       </>
    )

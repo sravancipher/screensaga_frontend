@@ -3,15 +3,25 @@ import { userobjcontext } from "./Landing";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './Userdropdown.css'
 import Watchlistdisplay from "./Watchlistdisplay";
+import Downloaddisplay from "./Downloaddisplay";
 function Userdropdown({ watchlistdata, removewatchlist }) {
   const { sethome1, userobj } = useContext(userobjcontext);
-  const [watchlist, setWatchList] = useState(false);
-  // const[watchlistdata,setWatchListData]=useState([]);
+  const [watchlist, setWatchList] = useState();
+  const [download, setDownload] = useState();
   const [watchbtn, setWatchBtn] = useState(false);
+  const [downloadbtn, setDownloadBtn] = useState(false);
+  const[btnhighlight,setBtnHighlight]=useState(0);
+  function setdownload() {
+    setDownloadBtn(!downloadbtn)
+    setDownload(true);
+    setWatchList(false)
+    setBtnHighlight(1);
+  }
   function setwatchlist() {
     setWatchBtn(!watchbtn)
-    // setWatchListData([]);
-    setWatchList(!watchlist);
+    setWatchList(true);
+    setDownload(false);
+    setBtnHighlight(2);
   }
   const username = userobj.mail.slice(0, -10)
   // async function getwatchlist(e){
@@ -45,7 +55,7 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
   // }
   return (
     <>
-      <span className="user-btn bg-dark pt-2" style={{ color: "orangered" }} data-bs-toggle="offcanvas" data-bs-target="#useroffcanvas"><AccountCircleIcon sx={{ fontSize: "40px" }} /></span>
+      <span className="user bg-dark pt-2 " style={{ color: "orangered" }} data-bs-toggle="offcanvas" data-bs-target="#useroffcanvas"><AccountCircleIcon sx={{ fontSize: "40px" }} /></span>
       <div class="offcanvas offcanvas-end text-bg-dark" id="useroffcanvas" >
 
         <div class="offcanvas-header">
@@ -55,11 +65,13 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
         <div class="offcanvas-body" >
           <hr className="offcanvas-divider" />
 
-          <div className="btn btn-secondary mx-1" style={{ backgroundColor: "transparent" }}>Downloads</div>
-          <button className="btn btn-secondary " style={{ backgroundColor: "transparent" }} onClick={() => { setwatchlist(true) }} disabled={watchbtn}>Watch List</button>
+          <div className="btn mx-1 text-white" style={{ backgroundColor:btnhighlight==1 && "transparent",border:btnhighlight==1 && "2px solid white"}  } onClick={() => { setdownload() }}>Downloads</div>
+          <button className="btn text-white" style={{ backgroundColor:btnhighlight==2 && "transparent",border:btnhighlight==2 && "2px solid white" }} onClick={() => { setwatchlist() }}>Watch List</button>
           <hr className="offcanvas-divider" />
           <button class="btn text-light" style={{ backgroundColor: "red" }} type="button" onClick={() => { sethome1() }}>Sign out</button>
-          {watchlist ? <Watchlistdisplay watchlistdata={watchlistdata} setwatchlist={setwatchlist} removewatchlist={removewatchlist} /> : <></>}
+          {watchlist &&<Watchlistdisplay watchlistdata={watchlistdata} setwatchlist={setwatchlist} removewatchlist={removewatchlist} />}
+          {download && <Downloaddisplay setdownload={setdownload}/>}
+          
         </div>
       </div>
       

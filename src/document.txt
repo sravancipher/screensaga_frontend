@@ -16,3 +16,4 @@ my system ip:192.168.1.2
 
 login:// let url=`https://screensagadb.up.railway.app/user/login/${user_mail}/${user_pswd}`;
 <div className="text-success mt-2" style={{borderRadius:"5px",wordWrap:"break-word",minWidth:"220px",maxWidth:"220px",textAlign:"center",position:"absolute",zIndex:"2",borderColor:"white",border:"2px solid"}}>{opdata}</div>:<div className="text-danger mt-2" style={{borderRadius:"5px",wordWrap:"break-word",minWidth:"220px",maxWidth:"220px",textAlign:"center",position:"absolute",zIndex:"2",borderColor:"white",border:"2px solid"}}>{opdata}</div>
+<button type="button" class="btn-close text-bg-danger mt-1" onClick={() => setwatchlist()}></button>

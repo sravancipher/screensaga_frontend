@@ -22,7 +22,7 @@ function Contact(){
     }
     return(
         <>
-        <h3 className="bg-danger p-1" style={{textAlign:"center",borderRadius:"6px"}}>Reach Us</h3>
+        <h3 className="bg-danger p-1 " style={{textAlign:"center",borderRadius:"6px"}}>Reach Us</h3>
           <div className="container">
           <div className="row">
 
@@ -39,7 +39,7 @@ function Contact(){
               <label htmlFor="write" className="form-labe text-dark">Write to us</label>
              </div>
              <div className="d-grid">
-            <button type="submit" className="btn btn-success" style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Submit</button>
+            <button type="submit" className="btn btn-success contact" style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Submit</button>
             </div>
              </form>
             </div>

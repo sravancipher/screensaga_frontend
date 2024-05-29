@@ -8,7 +8,7 @@ import Userdropdown from './Userdropdown'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { userobjcontext } from './Landing'
-import useApi from './useApi'
+import Joyride from 'react-joyride'
 export const watchlaterdbdata = createContext();
 function Routings() {
   const { userobj } = useContext(userobjcontext);
@@ -28,9 +28,6 @@ function Routings() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-
-
-
   }, []);
   const scrollToTop = () => {
     window.scrollTo({
@@ -38,7 +35,6 @@ function Routings() {
       behavior: 'smooth'
     });
   };
-
   //for card component add to watch later functionality
   async function addwatchlist(e, movie_name, movie_image) {
 
@@ -96,10 +92,26 @@ function Routings() {
   function moviesseries(data) {
     setMoviesSeries(data);
   }
+  const[run,setRun]=useState();
+  useEffect(()=>{
+    let res=localStorage.getItem(userobj.mail);
+    if(res=="true"){
+      setRun(false);
+      console.log("localstorage data in if",localStorage.getItem(userobj.mail));
+      
+    }else{
+      setRun(true);
+      console.log("localstorage data in else" ,localStorage.getItem(userobj.mail));
+      // localStorage.setItem(userobj.mail,true)
+    }
+  },[])
+  function settinglocalstorage(){
+    localStorage.setItem(userobj.mail,true)
+  }
   return (
     <>
       <BrowserRouter>
-        <Menubar watchlistdata={watchlistdata} removewatchlist={removewatchlist} movies_series={movies_series} />
+        <Menubar watchlistdata={watchlistdata} removewatchlist={removewatchlist} movies_series={movies_series} run={run} settinglocalstorage={settinglocalstorage}/>
         <watchlaterdbdata.Provider value={{ watchlistdata, addwatchlist, removewatchlist, showScrollTop, scrollToTop, moviesseries }}>
           <Routes>
 
@@ -116,11 +128,11 @@ function Routings() {
   )
 }
 
-function Menubar({ watchlistdata, removewatchlist, movies_series }) {
+function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settinglocalstorage}) {
   const [input, setInput] = useState();
   const [searchinput, setSearchInput] = useState("");
   const [opdata, setOpData] = useState();
-
+  
   function searchfn(e) {
     setSearchInput(e.target.value);
     e.preventDefault();
@@ -140,11 +152,44 @@ function Menubar({ watchlistdata, removewatchlist, movies_series }) {
 
 
   }
-
+  const steps = [
+    {
+      target: '.home',
+      content: "Explore home section to find a variety of movies and web series available for you to watch.",
+    },
+    {
+      target: '.movies',
+      content: "This section features movies available for you to watch."
+    },
+    {
+      target: '.webseries',
+      content: "Discover webseries in this section that are available for you to watch."
+    },
+    {
+      target: '.searchbar',
+      content: "Utilize the search bar to quickly check if the movie or series you're interested in is available on our platform. It provides instant feedback on the availability of the selected movie or series"
+    },
+    {
+      target: '.user',
+      content: "Explore your personalized collection, featuring the movies you've added to your watchlist and those you've downloaded and it's also where you can sign out."
+    },
+    {
+      target: '.contact',
+      content: "Feel free to provide your feedback or report any issues you encounter while using our website."
+    },
+  ];
+  
   return (
     <>
+    <Joyride 
+    steps={steps} run={run}  
+    continuous={true}
+    scrollToFirstStep={true}
+    showProgress={true}
+    showSkipButton={true}
+    callback={settinglocalstorage}/>
       <div className='d-flex'>
-        <nav className="navbar navbar-expand-sm bg-dark navbar-dark flex-grow-1" style={{ borderBottom: "none" }}>
+        <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1" style={{ borderBottom: "none" }}>
           <div className="container-fluid ">
             <a className="navbar-brand   text-light " style={{ fontFamily: "lucida handwriting" }}>ScreenSaga</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#moviemenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,19 +198,19 @@ function Menubar({ watchlistdata, removewatchlist, movies_series }) {
             <div className="collapse navbar-collapse" id="moviemenu">
               <ul className="navbar-nav me-auto ">
                 <li className="nav-item ">
-                  <Link to="/" className="nav-link  text-light">Home</Link>
+                  <Link to="/" className="nav-link text-light home">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-light" to="/movies">Movies</Link>
+                  <Link className="nav-link text-light movies" to="/movies">Movies</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-light " to="/webseries">Web Series</Link>
+                  <Link className="nav-link text-light webseries" to="/webseries">Web Series</Link>
                 </li>
               </ul>
 
               <form >
-                <input className="form-control me-2 bg-light d-sm-block d-none" type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
-                {input ? <div class="d-flex justify-content-center"><h5 class="mt-2 text-success" style={{ position: "absolute" }}><b>{opdata}</b></h5> </div>: <div class="d-flex justify-content-center"><h5 class="mt-2 text-danger" style={{ position: "absolute" }}><b>{opdata}</b></h5></div>}
+                <input className="form-control me-2 bg-light d-md-block d-none searchbar" style={{ width: "300px" }} type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
+                {input ? <div class="d-flex justify-content-center"><h5 class="mt-2 text-success" style={{ position: "absolute" }}><b>{opdata}</b></h5> </div> : <div class="d-flex justify-content-center"><h5 class="mt-2 text-danger" style={{ position: "absolute" }}><b>{opdata}</b></h5></div>}
               </form>
             </div>
           </div>
@@ -175,10 +220,10 @@ function Menubar({ watchlistdata, removewatchlist, movies_series }) {
 
       <div className="row justify-content-center bg-dark" >
         <div className="col-md-12 col-10">
-          <input className=" form-control me-2 bg-light d-sm-none d-block " type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
+          <input className=" form-control me-2 bg-light d-md-none d-block searchbar" type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
         </div>
       </div>
-      {input ? <div class="d-flex justify-content-center d-sm-none d-block"><h5 class="text-success p-2" style={{ position: "absolute" }}><b>{opdata}</b></h5></div> : <div class="d-flex justify-content-center d-sm-none d-block"><h5 class="text-danger p-2" style={{ position: "absolute" }}><b>{opdata}</b></h5></div>}
+      {input ? <div class="d-flex justify-content-center d-md-none d-block"><h5 class="text-success p-2" style={{ position: "absolute" }}><b>{opdata}</b></h5></div> : <div class="d-flex justify-content-center d-md-none d-block"><h5 class="text-danger p-2" style={{ position: "absolute" }}><b>{opdata}</b></h5></div>}
 
     </>
   )
