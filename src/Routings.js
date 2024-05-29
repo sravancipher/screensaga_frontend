@@ -210,7 +210,7 @@ function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settingloc
 
               <form >
                 <input className="form-control me-2 bg-light d-md-block d-none searchbar" style={{ width: "300px" }} type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
-                {input ? <div className="d-flex justify-content-center d-md-none d-block"><h5 class="mt-2 text-success" style={{ position: "absolute" }}><b>{opdata}</b></h5> </div> : <div className="d-flex justify-content-center d-md-none d-block"><h5 class="mt-2 text-danger" style={{ position: "absolute" }}><b>{opdata}</b></h5></div>}
+                {input ? <div className="d-flex justify-content-center d-none d-md-block"><h5 class="mt-2 text-success" style={{ position: "absolute" }}><b>{opdata}</b></h5> </div> : <div className="d-flex justify-content-center d-none d-md-block"><h5 class="mt-2 text-danger" style={{ position: "absolute" }}><b>{opdata}</b></h5></div>}
               </form>
             </div>
           </div>
