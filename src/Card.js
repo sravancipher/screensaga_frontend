@@ -1,17 +1,13 @@
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
-import axios from 'axios'
 import { userobjcontext } from './Landing';
 import { useContext, useEffect, useState } from 'react';
 import { watchlaterdbdata } from './Routings';
-import useRemoveApi from './useRemoveApi';
-function Card({ image, name, key }) {
+function Card({ image, name}) {
     const { addwatchlist, watchlistdata,removewatchlist } = useContext(watchlaterdbdata);
     const [watchlistcontent, setWatchListContent] = useState();
-    
     const { userobj } = useContext(userobjcontext);
-    // const[watchlistmoviesstring,setWatchListMoviesString]=useState("");
     console.log("length", watchlistdata.length)
     useEffect(() => {
         setWatchListContent(watchlistdata);

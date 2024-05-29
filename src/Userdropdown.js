@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { userobjcontext } from "./Landing";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './Userdropdown.css'
-import axios from "axios";
 import Watchlistdisplay from "./Watchlistdisplay";
 function Userdropdown({ watchlistdata, removewatchlist }) {
   const { sethome1, userobj } = useContext(userobjcontext);
