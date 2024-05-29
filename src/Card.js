@@ -29,7 +29,7 @@ function Card({ image, name, key }) {
             <div className='card border-0 bg-dark m-1 ' >
                 <img src={image} style={{ minHeight: "200px", maxHeight: "200px" }} />
                 <div >
-                    <p className='text-light mx-2' style={{ minHeight: "50px", textAlign: "center", alignContent: "center" }}>{name} </p>
+                    <p className='text-light mx-2' style={{minHeight: "50px",maxHeight: "50px",textAlign:"center",alignContent:"end"}}>{name} </p>
                 </div>
                 <div className='d-grid gap-2 '>
                     <button className='btn text-light' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Watch Now <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></button>
