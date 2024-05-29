@@ -8,6 +8,7 @@ import Userdropdown from './Userdropdown'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { userobjcontext } from './Landing'
+import useApi from './useApi'
 export const watchlaterdbdata=createContext();
 function Routings(){
   const {userobj}=useContext(userobjcontext);
@@ -16,7 +17,9 @@ function Routings(){
   const[watchlistdata,setWatchListData]=useState([]);  //to display in watch later list
   const [removedmovie,setRemovedMovie] = useState();
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  let movies_series;
+  let  data=useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
+  movies_series.map((item)=>{movies_series+=item.title})
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) { // Change 300 to the scroll position where your navbar disappears
@@ -94,7 +97,7 @@ function Routings(){
     return(
         <>
          <BrowserRouter>
-         <Menubar watchlistdata={watchlistdata} removewatchlist={removewatchlist}/>
+         <Menubar watchlistdata={watchlistdata} removewatchlist={removewatchlist} movies_series={movies_series}/>
          <watchlaterdbdata.Provider value={{watchlistdata,addwatchlist,removewatchlist,showScrollTop,scrollToTop}}>
           <Routes>
           
@@ -111,7 +114,7 @@ function Routings(){
     )
 }
 
-function Menubar({watchlistdata,removewatchlist}){
+function Menubar({watchlistdata,removewatchlist,movies_series}){
   const[input,setInput]=useState();
   const[searchinput,setSearchInput]=useState("");
   const[opdata,setOpData]=useState();
@@ -122,14 +125,14 @@ function Menubar({watchlistdata,removewatchlist}){
   //   setSearchInput(e.target.value);
     
   //   }
-  let movies="rrrdevara"
+  movies_series=movies_series.toLowerCase();
   function searchfn(e) {
     setSearchInput(e.target.value);
     e.preventDefault();
-    if(e.target.value.length==0){
+    if(e.target.value.toLowerCase().length==0){
       setOpData("");
     }
-      else if (movies.includes(e.target.value)) {
+      else if (movies_series.includes((e.target.value.toLowerCase()))) {
       
         setOpData("Movie Available");
         setInput(true);
@@ -142,11 +145,7 @@ function Menubar({watchlistdata,removewatchlist}){
     
     
   }
-    
-  // useEffect(()=>{
-  //   ele.addEventListener("mousedown",setInput(true))
-  //   ele.addEventListener("mouseup",setInput(false))
-  // })
+  
     return(
         <>
         <div className='d-flex'>
