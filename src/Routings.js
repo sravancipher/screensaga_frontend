@@ -129,11 +129,11 @@ function Menubar({ watchlistdata, removewatchlist, movies_series }) {
     }
     else if (movies_series.toLowerCase().includes((e.target.value.toLowerCase()))) {
 
-      setOpData("Movie Available");
+      setOpData("Movie/Webseries available");
       setInput(true);
     }
     else {
-      setOpData("Movie not available");
+      setOpData("Movie/Webseries not available");
       setInput(false);
     }
 
@@ -164,7 +164,7 @@ function Menubar({ watchlistdata, removewatchlist, movies_series }) {
               </ul>
 
               <form >
-                <input className="form-control me-2 bg-light d-sm-block d-none" type="text" placeholder="Check For Availability" value={searchinput} onChange={(e) => { searchfn(e) }} />
+                <input className="form-control me-2 bg-light d-sm-block d-none" type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
                 {input ? <div class="d-flex justify-content-center"><h5 class="mt-2 text-success" style={{ position: "absolute" }}>{opdata}</h5> </div>: <div class="d-flex justify-content-center"><h5 class="mt-2 text-danger" style={{ position: "absolute" }}>{opdata}</h5></div>}
               </form>
             </div>
@@ -175,7 +175,7 @@ function Menubar({ watchlistdata, removewatchlist, movies_series }) {
 
       <div className="row justify-content-center bg-dark" >
         <div className="col-md-12 col-10">
-          <input className=" form-control me-2 bg-light d-sm-none d-block " type="text" placeholder="Check For Availability" value={searchinput} onChange={(e) => { searchfn(e) }} />
+          <input className=" form-control me-2 bg-light d-sm-none d-block " type="text" placeholder="Is your movie/webseries available?" value={searchinput} onChange={(e) => { searchfn(e) }} />
         </div>
       </div>
       {input ? <div class="d-flex justify-content-center d-sm-none d-block"><h5 class="text-success p-2" style={{ position: "absolute" }}>{opdata}</h5></div> : <div class="d-flex justify-content-center d-sm-none d-block"><h5 class="text-danger p-2" style={{ position: "absolute" }}>{opdata}</h5></div>}
