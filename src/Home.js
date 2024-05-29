@@ -11,11 +11,15 @@ import { getting2movies } from './getting2movies';
 import Contact from './Contact';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 function Home() {
-    const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
+    const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
     const [more1, setMore1] = useState(false);
     const [more2, setMore2] = useState(false);
     let list1 = useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
     let list2 = useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
+    let movies_series;
+  list1.map((item)=>{movies_series+=item.title})
+//   movies_series=movies_series.toLowerCase();
+  moviesseries(movies_series);
     let twomovies = getting2movies(list1);
     list1 = list1.slice(0, 4);
     list2 = list2.slice(5, 9);
@@ -72,7 +76,7 @@ function Home() {
                 </div>
                 <Contact/>
                 {showScrollTop && (
-                    <span  type="button" className="text-danger" onClick={scrollToTop}>
+                    <span  type="button" className="text-danger" onClick={scrollToTop} style={{position:"fixed",bottom:"0",right:"0"}}>
                     <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                     </span>
                   )}

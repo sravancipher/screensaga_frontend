@@ -73,7 +73,7 @@ function Movies(){
                    </div>
                    <Contact/>
                    {showScrollTop && (
-                    <span  type="button" className="text-danger" onClick={scrollToTop}>
+                    <span  type="button" className="text-danger" onClick={scrollToTop} style={{position:"fixed",bottom:"0",right:"0"}}>
                     <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                     </span>
                   )}

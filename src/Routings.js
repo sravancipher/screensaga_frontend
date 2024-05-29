@@ -13,16 +13,13 @@ export const watchlaterdbdata=createContext();
 function Routings(){
   const {userobj}=useContext(userobjcontext);
   // const [watchdata,setWatchData]=useState("");
-  const[detectwatchlist,setDetectWatchList]=useState(false);
+  const[detectwatchlist,setDetectWatchList]=useState(false); //to make changes whenever the watchlist is changed
   const[watchlistdata,setWatchListData]=useState([]);  //to display in watch later list
-  const [removedmovie,setRemovedMovie] = useState();
+  // const [removedmovie,setRemovedMovie] = useState();   
   const [showScrollTop, setShowScrollTop] = useState(false);
-  let movies_series;
-  let  data=useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
-  movies_series.map((item)=>{movies_series+=item.title})
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) { // Change 300 to the scroll position where your navbar disappears
+      if (window.scrollY > 50) { 
         setShowScrollTop(true);
       } else {
         setShowScrollTop(false);
@@ -90,15 +87,19 @@ function Routings(){
     async function removewatchlist(e, movie, mail) {
       e.preventDefault();
       let res = await axios.delete(`https://screensagadb.up.railway.app/user/deletewatchlist/${mail}/${movie}`);
-        setRemovedMovie(res.data);
+        // setRemovedMovie(res.data);
         setDetectWatchList(!detectwatchlist)
-      console.log("deleted data",removedmovie);
+      // console.log("deleted data",removedmovie);
+  }
+  const[movies_series,setMoviesSeries]=useState();
+  function moviesseries(data){
+    setMoviesSeries(data);
   }
     return(
         <>
          <BrowserRouter>
          <Menubar watchlistdata={watchlistdata} removewatchlist={removewatchlist} movies_series={movies_series}/>
-         <watchlaterdbdata.Provider value={{watchlistdata,addwatchlist,removewatchlist,showScrollTop,scrollToTop}}>
+         <watchlaterdbdata.Provider value={{watchlistdata,addwatchlist,removewatchlist,showScrollTop,scrollToTop,moviesseries}}>
           <Routes>
           
           <Route exact path='/' element={<Home/>}/>
@@ -119,20 +120,14 @@ function Menubar({watchlistdata,removewatchlist,movies_series}){
   const[searchinput,setSearchInput]=useState("");
   const[opdata,setOpData]=useState();
   const ele=useRef();
-  // function searchfn(e){
-  //   setInput(true);
-  //   e.preventDefault();
-  //   setSearchInput(e.target.value);
-    
-  //   }
-  movies_series=movies_series.toLowerCase();
+  
   function searchfn(e) {
     setSearchInput(e.target.value);
     e.preventDefault();
     if(e.target.value.toLowerCase().length==0){
       setOpData("");
     }
-      else if (movies_series.includes((e.target.value.toLowerCase()))) {
+      else if (movies_series.toLowerCase().includes((e.target.value.toLowerCase()))) {
       
         setOpData("Movie Available");
         setInput(true);
@@ -169,8 +164,8 @@ function Menubar({watchlistdata,removewatchlist,movies_series}){
             </ul>
             
             <form >
-              <input ref={ele} className="form-control me-2 bg-light " type="text" placeholder="Search" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
-              {input?<h5 class="mt-2 text-success" style={{textAlign:"center",position:"absolute"}}>{opdata}</h5>:<h5 class="mt-2 text-danger" style={{textAlign:"center",position:"absolute"}}>{opdata}</h5>}
+              <input ref={ele} className="form-control me-2 bg-light " type="text" placeholder="Check For Availability" value={searchinput} onChange={(e)=>{searchfn(e)}}/>
+              {input?<h5 class="mt-2 text-success" style={{position:"absolute"}}>{opdata}</h5>:<h5 class="mt-3 text-danger" style={{position:"absolute"}}>{opdata}</h5>}
             </form>
           </div>
         </div>
