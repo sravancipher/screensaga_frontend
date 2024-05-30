@@ -1,6 +1,6 @@
 import Card  from './Card'
 import useApi from './useApi'
-function More({fn,url}){
+function More({fn,url,playingmovie}){
     const list=useApi(url);
     
     

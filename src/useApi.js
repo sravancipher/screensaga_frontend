@@ -12,7 +12,7 @@ function useApi(url){
         if(url.includes("cartoons")){
             updateList(data)
         }else{
-            let filteredMovies = data.filter(movie => movie.id !== 63376 && movie.id !== 36361)
+            let filteredMovies = data.filter(movie => movie.id !== 63376 && movie.id !== 36361 && movie.id!==264306)
             updateList(filteredMovies)
         }
         

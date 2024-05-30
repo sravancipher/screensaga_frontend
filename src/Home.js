@@ -11,6 +11,7 @@ import { getting2movies } from './getting2movies';
 import Contact from './Contact';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import Joyride from 'react-joyride';
+import PlayMovie from './PlayMovie';
 function Home() {
     const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
     const [more1, setMore1] = useState(false);
@@ -30,10 +31,14 @@ function Home() {
     function setless2() {
         setMore2(false);
     }
+    const[playmovie,setPlayMovie]=useState(false);
+    function playingmovie(){
+        setPlayMovie(!playmovie);
+    }
     return (
             <>
-            
-            <div className='bg-dark py-4 text-light '>
+            {
+                playmovie?<PlayMovie playingmovie={playingmovie}/>:<div className='bg-dark py-4 text-light '>
                 <div className='container '>
                     <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                         <div className='col-md-6 text-light'>
@@ -51,11 +56,11 @@ function Home() {
                 <div className='row m-4'>
                     <h4>ScreenSaga Recommended</h4>
                     {
-                        more1 ? <More fn={setless1} url="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te" /> : <>
+                        more1 ? <More fn={setless1} playingmovie={playingmovie} url="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te" /> : <>
                             {
                                 list1.map(({ title, backdrop_path, id }) => {
                                     let image = 'https://image.tmdb.org/t/p/original' + backdrop_path;
-                                    return <div className='col-md-3'><Card image={image} name={title} key={id} watchdata={watchdata} /></div>
+                                    return <div className='col-md-3'><Card playingmovie={playingmovie} image={image} name={title} key={id} watchdata={watchdata} /></div>
                                 })
                             }
                             <div className='row'><p className='btn text-primary float-end' style={{ textAlign: "end" }} onClick={() => setMore1(true)}>See More</p></div></>
@@ -79,7 +84,9 @@ function Home() {
                     <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                     </span>
                   )}
-            </div>
+            </div>  
+            }
+            
         </>
     )
 }

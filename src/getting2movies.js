@@ -1,10 +1,10 @@
 export function getting2movies(list1) {
-    let num1 = Math.floor(Math.random() * (19)) + 0;
-    let num2 = Math.floor(Math.random() * (19)) + 0;
+    let num1 = Math.floor(Math.random() * (18)) + 0;
+    let num2 = Math.floor(Math.random() * (18)) + 0;
     let image1, image2, name1, name2;
     if (num1 == num2) {
-        num1=Math.floor(Math.random() * (19)) + 0;
-        num2=Math.floor(Math.random() * (19)) + 0;
+        num1=Math.floor(Math.random() * (18)) + 0;
+        num2=Math.floor(Math.random() * (18)) + 0;
     }
     if (list1.length > 0) {
         

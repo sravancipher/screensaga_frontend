@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server --watch watchlist.json --port 4000"
+    "start": "json-server --watch utubeurls_api.json --port 4000"
   },
   "keywords": [],
   "author": "",
