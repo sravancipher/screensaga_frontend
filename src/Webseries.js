@@ -37,7 +37,7 @@ function Webseries() {
     return (
         <>
         {
-            playmovie?<PlayMovie playingmovie={playingmovie}/>:<div className='bg-dark py-4 text-light'>
+            playmovie?<PlayMovie playingmovie={playingmovie}/>:<div className='bg-dark py-4 text-light' >
             <div className='container'>
                 <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                     <div className='col-md-6 text-light'>

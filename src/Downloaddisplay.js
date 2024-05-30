@@ -6,7 +6,7 @@ function Downloaddisplay({setdownload}){
                     <h3 >Your Downloads</h3>
                     
                 </div>
-                <h3 className="text-danger">Download feauture is not available yet.</h3>
+                <h3 className="text-danger">Download feauture is not available yet</h3>
                 </div>
         
         </>
