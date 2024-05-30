@@ -21,6 +21,7 @@ function Home() {
     let movies_series;
   list1.map((item)=>{movies_series+=item.title})
 //   movies_series=movies_series.toLowerCase();
+movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
   moviesseries(movies_series);
     let twomovies = getting2movies(list1);
     list1 = list1.slice(0, 4);
