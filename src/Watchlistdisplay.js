@@ -5,7 +5,7 @@ import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 function Watchlistdisplay({ watchlistdata, setwatchlist,removewatchlist }) {
     const{userobj}=useContext(userobjcontext);
     const [watchlistcontent, setWatchListContent] = useState();
-    console.log("length", watchlistdata.length)
+    console.log("length of watchlist data ", watchlistdata.length)
     useEffect(() => {
         setWatchListContent(watchlistdata);
     })

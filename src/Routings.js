@@ -75,9 +75,9 @@ function Routings() {
       }
     }
     ).then(res => {
-      console.log("in then response", res.data);
+      console.log("watchlist data result in then response", res.data);
       setWatchListData(res.data);
-      console.log("data added to db", watchlistdata);
+      console.log("watchlistdata added to db", watchlistdata);
     })
 
   }

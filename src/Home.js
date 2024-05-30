@@ -12,8 +12,11 @@ import Contact from './Contact';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import Joyride from 'react-joyride';
 import PlayMovie from './PlayMovie';
+import './Home.css'
+import { userobjcontext } from './Landing';
 function Home() {
     const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
+    const{userobj}=useContext(userobjcontext);
     const [more1, setMore1] = useState(false);
     const [more2, setMore2] = useState(false);
     let list1 = useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
@@ -32,15 +35,18 @@ movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
     function setless2() {
         setMore2(false);
     }
+    // const[continuelist,setContinueList]=useState();
     const[playmovie,setPlayMovie]=useState(false);
     function playingmovie(){
         setPlayMovie(!playmovie);
-    }
+        
+    }    
     return (
             <>
             {
                 playmovie?<PlayMovie playingmovie={playingmovie}/>:<div className='bg-dark py-4 text-light ' >
                 <div className='container '>
+                
                     <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                         <div className='col-md-6 text-light'>
                             <p className='text-light' >New Trailers</p>
@@ -54,6 +60,7 @@ movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
                         </div>
                     </div>
                 </div>
+                
                 <div className='row m-4'>
                     <h4>ScreenSaga Recommended</h4>
                     {
@@ -80,11 +87,13 @@ movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
                     }
                 </div>
                 <Contact/>
+                <div className='container'>
                 {showScrollTop && (
                     <span  type="button" className="text-danger" onClick={scrollToTop} style={{position:"fixed",bottom:"0",right:"0"}}>
                     <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                     </span>
                   )}
+                  </div>
             </div>  
             }
             

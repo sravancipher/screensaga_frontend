@@ -23,7 +23,6 @@ function Card({ image, name,playingmovie}) {
         console.log(moviestring);
     }
     const[video,setVideo]=useState(false);
-    
     const[videoid,setVideoId]=useState();
     async function playtrailer(e,moviename){
         e.preventDefault();
@@ -35,8 +34,6 @@ function Card({ image, name,playingmovie}) {
         setVideoId(movie.videoid);
         setVideo(true)
     }
-    
-    
     return (
         <>
            
