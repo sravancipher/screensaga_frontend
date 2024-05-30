@@ -16,7 +16,7 @@ function More({fn,url,playingmovie}){
                     console.log(title)
                 }
                 let image='https://image.tmdb.org/t/p/original'+l.backdrop_path;
-                return <div className='col-md-3'><Card image={image} name={title} key={l.id}/></div>
+                return <div className='col-md-3'><Card playingmovie={playingmovie} image={image} name={title} key={l.id}/></div>
             })
           }       
          

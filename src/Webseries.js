@@ -68,11 +68,11 @@ function Webseries() {
             <div className='row m-4'>
                 <h4>On The Air</h4>
                 {
-                    more2 ? <More fn={setless2} url="https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6" /> : <>
+                    more2 ? <More playingmovie={playingmovie} fn={setless2} url="https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6" /> : <>
                         {
                             ontheair.map(({ original_name, backdrop_path, id }) => {
                                 let image = 'https://image.tmdb.org/t/p/original' + backdrop_path;
-                                return <div className='col-md-3'><Card image={image} name={original_name} key={id} /></div>
+                                return <div className='col-md-3'><Card playingmovie={playingmovie} image={image} name={original_name} key={id} /></div>
                             })
                         }
                         <div className='row'><p className='btn text-primary float-end' style={{ textAlign: "end" }} onClick={() => setMore2(true)}>See More?</p></div></>

@@ -27,9 +27,12 @@ function Card({ image, name,playingmovie}) {
     const[videoid,setVideoId]=useState();
     async function playtrailer(e,moviename){
         e.preventDefault();
-        let video=await axios.get(`http://localhost:4000/movieurls?name=${moviename}`);
-        console.log(video.data[0].name);
-        setVideoId(video.data[0].videoid);
+        const response = await fetch('/utubeurls_api.json');
+        const data = await response.json();
+        const movie = data.movieurls.find(movie => movie.name === moviename);
+        console.log(movie.videoid);
+        console.log(movie.name);
+        setVideoId(movie.videoid);
         setVideo(true)
     }
     
