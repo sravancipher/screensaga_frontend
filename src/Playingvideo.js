@@ -1,6 +1,8 @@
 function Playingvideo({videoid}){
+    // let videourl="https://www.youtube.com/embed/NgBoMJy386M"+videoid
+    // let videourl="https://www.youtube.com/watch?v="+videoid
+     let videourl="https://www.youtube.com/embed/"+videoid
     // let videourl="https://www.youtube.com/embed/"+videoid
-    let videourl="https://www.youtube.com/embed/"+videoid
     return(
         <>
          <div className="" >

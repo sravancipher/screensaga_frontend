@@ -25,13 +25,41 @@ function Card({ image, name,playingmovie}) {
     const[video,setVideo]=useState(false);
     const[videoid,setVideoId]=useState();
     async function playtrailer(e,moviename){
+
         e.preventDefault();
-        const response = await fetch('/utubeurls_api.json');
-        const data = await response.json();
-        const movie = data.movieurls.find(movie => movie.name === moviename);
-        console.log(movie.videoid);
-        console.log(movie.name);
-        setVideoId(movie.videoid);
+        // const response = await fetch('/utubeurls_api.json');
+        // const response=await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${moviename} movie telugu%20trailer&type=video&key=AIzaSyDaIEeVUVuzz84Il7Yi1jar4Mz30J6A2KQ`)
+        const options = {
+            method: 'GET',
+            url: 'https://youtube-data8.p.rapidapi.com/search/',
+            params: {
+              q: moviename+' Movie Telugu Trailer',
+              hl: 'en',
+              gl: 'US',
+              type:'video',
+              maxResults:1
+            },
+            headers: {
+              'x-rapidapi-key': 'ba5ccfae70msh4602074d1f53caap1ac41ejsnbedbd6f0d7c8',
+              'x-rapidapi-host': 'youtube-data8.p.rapidapi.com'
+            }
+          };
+          
+          try {
+              const response = await axios.request(options);
+              //console.log("videodata",response.data.items[0].id.videoId);
+              console.log(response.data.contents);
+              setVideoId(response.data.contents[0].video.videoId);
+          } catch (error) {
+              console.error(error);
+          }
+        
+        // let i=0;
+        // const data = await response.json();
+        // const movie = data.movieurls.find(movie => movie.name === moviename);
+        // console.log(movie.videoid);
+        // console.log(movie.name);
+        
         setVideo(true)
     }
     return (

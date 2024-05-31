@@ -22,8 +22,10 @@ function Movies(){
     }
     function setless2(){
         setMore2(false);}
+        const url1="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te";
+        const url2="https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1";
     let list1=useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
-    let list2=useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
+    let list2=useApi(url2);
     let twomovies=getting2movies(list1);
     list1=list1.slice(11,15);
     list2=list2.slice(15,19);

@@ -19,16 +19,21 @@ function Home() {
     const{userobj}=useContext(userobjcontext);
     const [more1, setMore1] = useState(false);
     const [more2, setMore2] = useState(false);
-    let list1 = useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
-    let list2 = useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
+    const url1="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te";
+    const url2="https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1";
+    let list1 = useApi(url1);
+    
+    let list2 = useApi(url2);
+    // let list3=useApi("https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1")
+    
     let movies_series;
   list1.map((item)=>{movies_series+=item.title})
-//   movies_series=movies_series.toLowerCase();
-movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
+
+  movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
   moviesseries(movies_series);
     let twomovies = getting2movies(list1);
-    list1 = list1.slice(0, 4);
-    list2 = list2.slice(5, 9);
+    const list11 = list1.slice(0, 4);
+    const list22 = list2.slice(5, 9);
     function setless1() {
         setMore1(false);
     }
@@ -64,9 +69,9 @@ movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
                 <div className='row m-4'>
                     <h4>ScreenSaga Recommended</h4>
                     {
-                        more1 ? <More fn={setless1} playingmovie={playingmovie} url="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te" /> : <>
+                        more1 ? <More fn={setless1} playingmovie={playingmovie} url1={url1} url2={url2} /> : <>
                             {
-                                list1.map(({ title, backdrop_path, id }) => {
+                                list11.map(({ title, backdrop_path, id }) => {
                                     let image = 'https://image.tmdb.org/t/p/original' + backdrop_path;
                                     return <div className='col-md-3'><Card playingmovie={playingmovie} image={image} name={title} key={id} watchdata={watchdata} /></div>
                                 })
@@ -77,8 +82,8 @@ movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
                 <div className='row m-4'>
                     <h4>ScreenSaga Latest</h4>
                     {
-                        more2 ? <More playingmovie={playingmovie} fn={setless2} url="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te" /> : <>{
-                            list2.map(({ title, backdrop_path, id }) => {
+                        more2 ? <More playingmovie={playingmovie} fn={setless2} url1={url1} url2={url2} /> : <>{
+                            list22.map(({ title, backdrop_path, id }) => {
                                 let image = 'https://image.tmdb.org/t/p/original' + backdrop_path;
                                 return <div className='col-md-3'><Card playingmovie={playingmovie} image={image} name={title} key={id} watchdata={watchdata} /></div>
                             })
