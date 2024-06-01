@@ -94,6 +94,7 @@ function Routings() {
   }
   const[run,setRun]=useState();
   useEffect(()=>{
+
     let res=localStorage.getItem(userobj.mail);
     if(res=="true"){
       setRun(false);
@@ -154,6 +155,10 @@ function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settingloc
   }
   const steps = [
     {
+      target:".navbar-toggler",
+      content:"Explore the home section for a variety of movies and web series to watch.Find movies available for you.Discover web series available for you."
+    },
+    {
       target: '.home',
       content: "Explore home section to find a variety of movies and web series available for you to watch.",
     },
@@ -171,7 +176,7 @@ function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settingloc
     },
     {
       target: '.user',
-      content: "Explore your personalized collection, featuring the movies you've added to your watchlist and those you've downloaded and it's also where you can sign out."
+      content: "Discover your personalized collection, which includes the movies on your watchlist and the ones you've downloaded. Here, you can also sign out or delete your account."
     },
     {
       target: '.contact',

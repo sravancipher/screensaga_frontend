@@ -4,6 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './Userdropdown.css'
 import Watchlistdisplay from "./Watchlistdisplay";
 import Downloaddisplay from "./Downloaddisplay";
+import axios from "axios";
 function Userdropdown({ watchlistdata, removewatchlist }) {
   const { sethome1, userobj } = useContext(userobjcontext);
   const [watchlist, setWatchList] = useState();
@@ -53,6 +54,17 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
   //     }
 
   // }
+  function deleteaccount(e){
+    e.preventDefault();
+    const userconfirmation=window.confirm("Deleting your account will erase all your data permanently. Are you sure you want to proceed?");
+    if(userconfirmation){
+      axios.delete(`https://screensagadb.up.railway.app/user/delete/${userobj.mail}`)
+      .then(sethome1())
+      
+    }else{
+      window.alert("Account deletion canceled");
+    }
+  }
   return (
     <>
       <span className="user bg-dark pt-2 " style={{ color: "orangered" }} data-bs-toggle="offcanvas" data-bs-target="#useroffcanvas"><AccountCircleIcon sx={{ fontSize: "40px" }} /></span>
@@ -65,13 +77,13 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
         <div class="offcanvas-body" >
           <hr className="offcanvas-divider" />
 
-          <div className="btn mx-1 text-white" style={{ backgroundColor:btnhighlight==1 && "transparent",border:btnhighlight==1 && "2px solid white"}  } onClick={() => { setdownload() }}>Downloads</div>
-          <button className="btn text-white" style={{ backgroundColor:btnhighlight==2 && "transparent",border:btnhighlight==2 && "2px solid white" }} onClick={() => { setwatchlist() }}>Watch List</button>
+          <div className="btn text-white" style={{ backgroundColor:btnhighlight==1 && "transparent",border:btnhighlight==1 && "2px solid white"}  } onClick={() => { setdownload() }}>Downloads</div>
+          <button className="btn text-white mx-1" style={{ backgroundColor:btnhighlight==2 && "transparent",border:btnhighlight==2 && "2px solid white" }} onClick={() => { setwatchlist() }}>Watch List</button>
+          <button className="btn text-light " style={{ backgroundColor:"red"}} onCick={() => { setwatchlist() }} onClick={(e)=>{deleteaccount(e)}}><b>Delete Account</b></button>
           <hr className="offcanvas-divider" />
-          <button class="btn text-light" style={{ backgroundColor: "red" }} type="button" onClick={() => { sethome1() }}>Sign out</button>
+          <button class="btn btn-danger" syle={{ backgroundColor: "red" }} type="button" onClick={() => { sethome1() }}>Sign out</button>
           {watchlist &&<Watchlistdisplay watchlistdata={watchlistdata} setwatchlist={setwatchlist} removewatchlist={removewatchlist} />}
           {download && <Downloaddisplay setdownload={setdownload}/>}
-          
         </div>
       </div>
       

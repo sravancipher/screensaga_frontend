@@ -61,12 +61,12 @@ function Home() {
 
                         <div className='col-md-6'>
                             <p className='text-light' >Watch the Latest</p>
-                            <Watch_the_latest name="Mirzapur" image={mirzapur} ht="460px" t="300px" />
+                            <Watch_the_latest playingmovie={playingmovie} name="Mirzapur" image={mirzapur} ht="460px" t="300px" />
                         </div>
                     </div>
                 </div>
                 
-                <div className='row m-4'>
+                <div className='row m-4 ' >
                     <h4>ScreenSaga Recommended</h4>
                     {
                         more1 ? <More fn={setless1} playingmovie={playingmovie} url1={url1} url2={url2} /> : <>

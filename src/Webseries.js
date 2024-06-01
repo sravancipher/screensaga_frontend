@@ -22,7 +22,7 @@ function Webseries() {
     let ontheair = useApi("https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6");
     let twomovies = getting2movies(airing_today);
     airing_today = airing_today.slice(0, 4);
-    ontheair = ontheair.slice(0, 4);
+    ontheair = ontheair.slice(10,14);
     function setless1() {
         setMore1(false);
     }
@@ -47,8 +47,8 @@ function Webseries() {
 
                     <div className='col-md-6'>
                         <p className='text-light' >Watch the Latest</p>
-                        <Watch_the_latest name={twomovies[0]} image={twomovies[2]} key="2" ht="150px" t="10px" />
-                        <Watch_the_latest name={twomovies[1]} image={twomovies[3]} key="3" ht="150px" t="10px" />
+                        <Watch_the_latest playingmovie={playingmovie} name={twomovies[0]} image={twomovies[2]} key="2" ht="150px" t="10px" />
+                        <Watch_the_latest playingmovie={playingmovie} name={twomovies[1]} image={twomovies[3]} key="3" ht="150px" t="10px" />
                     </div>
                 </div>
             </div>

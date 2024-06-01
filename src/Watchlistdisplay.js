@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { userobjcontext } from "./Landing";
 import DeleteIcon from '@mui/icons-material/Delete';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import './watchlistdisplay.css';
 function Watchlistdisplay({ watchlistdata, setwatchlist,removewatchlist }) {
     const{userobj}=useContext(userobjcontext);
     const [watchlistcontent, setWatchListContent] = useState();

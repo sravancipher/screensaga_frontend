@@ -24,7 +24,7 @@ function Movies(){
         setMore2(false);}
         const url1="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te";
         const url2="https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1";
-    let list1=useApi("https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te");
+    let list1=useApi(url1);
     let list2=useApi(url2);
     let twomovies=getting2movies(list1);
     list1=list1.slice(11,15);
@@ -47,15 +47,15 @@ function Movies(){
 
                     <div className='col-md-6'>
                         <p className='text-light' >Watch the Latest</p>
-                        <Watch_the_latest name={twomovies[0]} image={twomovies[2]} key ="1" ht="150px" t="10px"/>
-                        <Watch_the_latest name={twomovies[1]} image={twomovies[3]} key ="2" ht="150px" t="10px"/>
+                        <Watch_the_latest playingmovie={playingmovie} name={twomovies[0]} image={twomovies[2]} key ="1" ht="150px" t="10px"/>
+                        <Watch_the_latest playingmovie={playingmovie} name={twomovies[1]} image={twomovies[3]} key ="2" ht="150px" t="10px"/>
                     </div>
                 </div>
             </div>
             <div className='row m-4'>
-               <h4>ScreenSaga Recommended</h4>
+               <h4>Telugu</h4>
                {
-                more1?<More fn={setless1} playingmovie={playingmovie} url="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te"/>:<>
+                more1?<More fn={setless1} playingmovie={playingmovie} url1={url1} url2={""}/>:<>
                 {
                     list1.map(({title,backdrop_path,id})=>{
                         let image='https://image.tmdb.org/t/p/original'+backdrop_path;
@@ -69,9 +69,9 @@ function Movies(){
                
                </div>
                <div className='row m-4'>
-               <h4>ScreenSaga Latest</h4>
+               <h4>English</h4>
                {
-                more2?<More playingmovie={playingmovie} fn={setless2} url="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te"/>:<>{
+                more2?<More playingmovie={playingmovie} fn={setless2} url1={""} url2={url2}/>:<>{
                     list2.map(({title,backdrop_path,id})=>{
                         let image='https://image.tmdb.org/t/p/original'+backdrop_path;
                         return <div className='col-md-3'><Card playingmovie={playingmovie} image={image} name={title} key={id}/></div>
