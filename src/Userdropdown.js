@@ -79,9 +79,9 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
 
           <div className="btn text-white" style={{ backgroundColor:btnhighlight==1 && "transparent",border:btnhighlight==1 && "2px solid white"}  } onClick={() => { setdownload() }}>Downloads</div>
           <button className="btn text-white mx-1" style={{ backgroundColor:btnhighlight==2 && "transparent",border:btnhighlight==2 && "2px solid white" }} onClick={() => { setwatchlist() }}>Watch List</button>
-          <button className="btn text-light " style={{ backgroundColor:"red"}} onCick={() => { setwatchlist() }} onClick={(e)=>{deleteaccount(e)}}><b>Delete Account</b></button>
+          <button class="btn btn-danger" type="button" onClick={() => { sethome1() }}>Sign out</button>
           <hr className="offcanvas-divider" />
-          <button class="btn btn-danger" syle={{ backgroundColor: "red" }} type="button" onClick={() => { sethome1() }}>Sign out</button>
+          <button className="btn text-light " style={{ backgroundColor:"red"}} onCick={() => { setwatchlist() }} onClick={(e)=>{deleteaccount(e)}}><b>Delete Account</b></button>
           {watchlist &&<Watchlistdisplay watchlistdata={watchlistdata} setwatchlist={setwatchlist} removewatchlist={removewatchlist} />}
           {download && <Downloaddisplay setdownload={setdownload}/>}
         </div>
