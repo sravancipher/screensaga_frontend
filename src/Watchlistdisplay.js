@@ -34,7 +34,7 @@ function Watchlistdisplay({ watchlistdata, setwatchlist,removewatchlist }) {
                                 <img src={movie.movie_image} />
                                 <div className="card-body p-0">
                                     <div className=" d-grid " >
-                                        <div className="btn text-light" style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}>Watch Now <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></div>
+                                        <div className="btn text-light "style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid"}}  data-bs-dismiss="offcanvas">Watch Now <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></div>
                                         <div className="btn text-bg-danger" onClick={(e) => { removewatchlist(e, movie.movie_name, userobj.mail)}}>Remove <DeleteIcon sx={{ fontSize: "20px", marginBottom: "3px" }} /></div></div>
                                 </div>
                             </div>

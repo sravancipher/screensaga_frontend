@@ -45,3 +45,4 @@ This is an auto-generated email. Please do not reply directly to this message.
 ---
 
 Ensure you replace `[User's Name]` with the actual user's name before sending the email.
+name={continuelist[0].name} image={continuelist[0].image}

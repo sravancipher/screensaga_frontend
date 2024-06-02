@@ -22,7 +22,6 @@ function Home() {
     const url1="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te";
     const url2="https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1";
     let list1 = useApi(url1);
-    
     let list2 = useApi(url2);
     // let list3=useApi("https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1")
     
@@ -40,16 +39,19 @@ function Home() {
     function setless2() {
         setMore2(false);
     }
-    // const[continuelist,setContinueList]=useState();
+    
     const[playmovie,setPlayMovie]=useState(false);
     function playingmovie(){
         setPlayMovie(!playmovie);
         
     }    
+    function stopplayingmovie(){
+        setPlayMovie(!playmovie);
+    }
     return (
             <>
             {
-                playmovie?<PlayMovie playingmovie={playingmovie}/>:<div className='bg-dark py-4 text-light ' >
+                playmovie?<PlayMovie stopplayingmovie={stopplayingmovie}/>:<div className='bg-dark py-4 text-light ' >
                 <div className='container '>
                 
                     <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>

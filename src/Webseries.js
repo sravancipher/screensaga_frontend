@@ -1,26 +1,29 @@
 import './Home.css'
-import manjummel from './images/manjummel.avif'
-import polimera2 from './images/polimera2.jpg'
-import rrr from './images/rrr.jpg'
+import sexeducation from './images/sexeducation.png';
+import strangerthings from './images/strangerthings.jpg';
 import Watch_the_latest from './Watch_the_latest';
 import Card from './Card';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useApi from './useApi';
 import More from './More';
 import Continue from './Continue';
 import dark from './images/dark.jpg'
-import { getting2movies } from './getting2movies';
 import Contact from './Contact';
 import { watchlaterdbdata } from './Routings';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import PlayMovie from './PlayMovie';
+import { userobjcontext } from './Landing';
+import axios from 'axios';
 function Webseries() {
+    const{userobj}=useContext(userobjcontext);
     const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
     const [more1, setMore1] = useState(false);
     const [more2, setMore2] = useState(false);
-    let airing_today = useApi("https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6");
-    let ontheair = useApi("https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6");
-    let twomovies = getting2movies(airing_today);
+    const url1="https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6";
+    const url2="https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6";
+    
+    let airing_today = useApi(url1);
+    let ontheair = useApi(url2);
     airing_today = airing_today.slice(0, 4);
     ontheair = ontheair.slice(10,14);
     function setless1() {
@@ -30,32 +33,80 @@ function Webseries() {
         setMore2(false);
     }
     const[playmovie,setPlayMovie]=useState(false);
-    function playingmovie(){
+    const[continuelist,setContinueList]=useState();
+    const[continuewatch,setContinueWatch]=useState(false);
+    function playingmovie(name,image){
         setPlayMovie(!playmovie);
+        axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+            user_mail:userobj.mail,
+            video_type:"webseries",
+            movie_name:name,
+            movie_image:image
+        })
+        .then(()=>{
+            // setContinueList([{name:name,image:image}]);
+            // console.log("continue list",continuelist)
+        }        
+        );
+        
+    }    
+    useEffect(()=>{
+        getcontinuewatchlist();
+    },[continuewatch,continuelist,playmovie])
+    async function getcontinuewatchlist(){
+        const video_type="webseries";
+        await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
+        .then((res)=>{
+            // setContinueList([{name:name,image:image}]);
+            // console.log("continue list",continuelist)
+            // setContinueWatch(true);
+            if(res.data!==''){
+                console.log("result",res)
+                console.log("continuewatclistdata",res.data);
+                setContinueList({name:res.data.movie_name,image:res.data.movie_image})
+                console.log("continuelistadat in variable",continuelist)
+                setContinueWatch(true);
+            }
+            else{
+                setContinueWatch(false);
+            }
+            
+            
+        }        
+        );
     }
-    
+    function stopplayingmovie(){ 
+        setPlayMovie(!playmovie);
+        
+    }
     return (
         <>
         {
-            playmovie?<PlayMovie playingmovie={playingmovie}/>:<div className='bg-dark py-4 text-light' >
+            playmovie?<PlayMovie stopplayingmovie={stopplayingmovie}/>:<div className='bg-dark py-4 text-light' >
             <div className='container'>
                 <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                     <div className='col-md-6 text-light'>
-                        <p className='text-light' >Continue Watching</p>
-                        <Continue name="Dark" image={dark} key="1" />
+                    {
+                        continuewatch?<><div style={{marginBottom:"25px"}}><p className='text-light' >Popular Watching</p>
+                        <Continue name="Dark" image={dark} minh="150px" maxh="150px" key="3" btntext="Watch Now"/>
+                        </div>
+                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching"/></>
+                        :<><p className='text-light' >Popular Watching</p>
+                        <Continue name="Dark" image={dark} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching"/></>
+                    }
                     </div>
 
                     <div className='col-md-6'>
                         <p className='text-light' >Watch the Latest</p>
-                        <Watch_the_latest playingmovie={playingmovie} name={twomovies[0]} image={twomovies[2]} key="2" ht="150px" t="10px" />
-                        <Watch_the_latest playingmovie={playingmovie} name={twomovies[1]} image={twomovies[3]} key="3" ht="150px" t="10px" />
+                        <Watch_the_latest playingmovie={playingmovie} name="Sex Education" image={sexeducation} key="2" ht="150px" t="10px" />
+                        <Watch_the_latest playingmovie={playingmovie} name="Stranger Things" image={strangerthings} key="3" ht="150px" t="10px" />
                     </div>
                 </div>
             </div>
             <div className='row m-4'>
                 <h4>Airing Today</h4>
                 {
-                    more1 ? <More fn={setless1} playingmovie={playingmovie} url="https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6" /> : <>
+                    more1 ? <More fn={setless1} playingmovie={playingmovie} url1={url1} url2={""}/> : <>
                         {
                             airing_today.map(({ original_name, backdrop_path, id }) => {
                                 let image = 'https://image.tmdb.org/t/p/original' + backdrop_path;
@@ -68,7 +119,7 @@ function Webseries() {
             <div className='row m-4'>
                 <h4>On The Air</h4>
                 {
-                    more2 ? <More playingmovie={playingmovie} fn={setless2} url="https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6" /> : <>
+                    more2 ? <More playingmovie={playingmovie} fn={setless2} url1={""} url2={url2} /> : <>
                         {
                             ontheair.map(({ original_name, backdrop_path, id }) => {
                                 let image = 'https://image.tmdb.org/t/p/original' + backdrop_path;
