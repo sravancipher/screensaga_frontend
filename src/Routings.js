@@ -67,7 +67,7 @@ function Routings() {
   }
   useEffect(() => {
     getwatchlist()
-  }, [detectwatchlist])
+  }, [detectwatchlist,watchlistdata])
   async function getwatchlist() {
     await axios.get(`https://screensagadb.up.railway.app/user/getwatchlist/${userobj.mail}`, {
       header: {
@@ -194,10 +194,10 @@ function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settingloc
     showSkipButton={true}
     callback={settinglocalstorage}/>
       <div className='d-flex'>
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1" style={{ borderBottom: "none" }}>
+        <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1 navbar-dismissable" style={{ borderBottom: "none" }} >
           <div className="container-fluid ">
             <a className="navbar-brand   text-light " style={{ fontFamily: "lucida handwriting" }}>ScreenSaga</a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#moviemenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-dismiss="navbar" data-bs-target="#moviemenu" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="moviemenu">

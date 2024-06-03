@@ -38,6 +38,7 @@ function Movies(){
     const[continuelist,setContinueList]=useState();
     const[continuewatch,setContinueWatch]=useState(false);
     function playingmovie(name,image){
+        console.log("called");
         setPlayMovie(!playmovie);
         axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
             user_mail:userobj.mail,
@@ -53,9 +54,6 @@ function Movies(){
         const video_type="movie";
         await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
         .then((res)=>{
-            // setContinueList([{name:name,image:image}]);
-            // console.log("continue list",continuelist)
-            // setContinueWatch(true);
             if(res.data!==''){
                 console.log("result",res)
                 console.log("continuewatclistdata",res.data);
@@ -84,9 +82,9 @@ function Movies(){
                     <div className='col-md-6 text-light'>
                     {
                         continuewatch?<><div style={{marginBottom:"25px"}}><p className='text-light' >Popular Watching</p>
-                        <Continue name="Manjummel Boys" image={manjummel} minh="150px" maxh="150px" key="3" btntext="Watch Now"/>
+                        <Continue name="Manjummel Boys" image={manjummel} minh="150px" maxh="150px" key="3" btntext="Watch Now" playingmovie={playingmovie}/>
                         </div>
-                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
+                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="4" btntext="Continue Watching" playingmovie={playingmovie}/></>
                         :<><p className='text-light' >Popular Watching</p>
                         <Continue name="Manjummel Boys" image={manjummel} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                     }

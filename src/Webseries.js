@@ -14,6 +14,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import PlayMovie from './PlayMovie';
 import { userobjcontext } from './Landing';
 import axios from 'axios';
+import PlayWebseries from './PlayWebseries';
 function Webseries() {
     const{userobj}=useContext(userobjcontext);
     const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
@@ -32,11 +33,15 @@ function Webseries() {
     function setless2() {
         setMore2(false);
     }
-    const[playmovie,setPlayMovie]=useState(false);
+    const[playwebseries,setPlayWebseries]=useState(false);
     const[continuelist,setContinueList]=useState();
     const[continuewatch,setContinueWatch]=useState(false);
+    const [name,setName]=useState();
+    const [image,setImage]=useState();
     function playingmovie(name,image){
-        setPlayMovie(!playmovie);
+        setName(name);
+        setImage(image);
+        setPlayWebseries(!playwebseries);
         axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
             user_mail:userobj.mail,
             video_type:"webseries",
@@ -52,7 +57,7 @@ function Webseries() {
     }    
     useEffect(()=>{
         getcontinuewatchlist();
-    },[continuewatch,continuelist,playmovie])
+    },[continuewatch,continuelist,playwebseries])
     async function getcontinuewatchlist(){
         const video_type="webseries";
         await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
@@ -76,19 +81,19 @@ function Webseries() {
         );
     }
     function stopplayingmovie(){ 
-        setPlayMovie(!playmovie);
+        setPlayWebseries(!playwebseries);
         
     }
     return (
         <>
         {
-            playmovie?<PlayMovie stopplayingmovie={stopplayingmovie}/>:<div className='bg-dark py-4 text-light' >
+            playwebseries?<PlayWebseries stopplayingmovie={stopplayingmovie} name={name} image={image}/>:<div className='bg-dark py-4 text-light' >
             <div className='container'>
                 <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                     <div className='col-md-6 text-light'>
                     {
                         continuewatch?<><div style={{marginBottom:"25px"}}><p className='text-light' >Popular Watching</p>
-                        <Continue name="Dark" image={dark} minh="150px" maxh="150px" key="3" btntext="Watch Now"/>
+                        <Continue name="Dark" image={dark} minh="150px" maxh="150px" key="3" btntext="Watch Now" playingmovie={playingmovie}/>
                         </div>
                         <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                         :<><p className='text-light' >Popular Watching</p>
