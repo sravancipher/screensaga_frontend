@@ -90,9 +90,9 @@ function Webseries() {
                         continuewatch?<><div style={{marginBottom:"25px"}}><p className='text-light' >Popular Watching</p>
                         <Continue name="Dark" image={dark} minh="150px" maxh="150px" key="3" btntext="Watch Now"/>
                         </div>
-                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching"/></>
+                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                         :<><p className='text-light' >Popular Watching</p>
-                        <Continue name="Dark" image={dark} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching"/></>
+                        <Continue name="Dark" image={dark} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                     }
                     </div>
 

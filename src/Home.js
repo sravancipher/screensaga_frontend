@@ -10,10 +10,12 @@ import { watchlaterdbdata } from './Routings';
 import { getting2movies } from './getting2movies';
 import Contact from './Contact';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-import Joyride from 'react-joyride';
 import PlayMovie from './PlayMovie';
 import './Home.css'
 import { userobjcontext } from './Landing';
+import axios from 'axios';
+import haromhara from './images/harom hara.jpg'
+import maname from './images/maname.webp'
 function Home() {
     const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
     const{userobj}=useContext(userobjcontext);
@@ -21,16 +23,36 @@ function Home() {
     const [more2, setMore2] = useState(false);
     const url1="https://api.themoviedb.org/3/discover/movie?&api_key=bcf371704c5b5986177c0d72527ae0a6&with_original_language=te";
     const url2="https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1";
+    const airing_todayurl="https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6";
+    const ontheairurl="https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1&api_key=bcf371704c5b5986177c0d72527ae0a6";
     let list1 = useApi(url1);
     let list2 = useApi(url2);
-    // let list3=useApi("https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1")
-    
+    let airing_today = useApi(airing_todayurl);
+    let ontheair = useApi(ontheairurl);
     let movies_series;
-  list1.map((item)=>{movies_series+=item.title})
+    const combined=[...list1,...list2,...ontheair,...airing_today]
+    combined.map((item)=>{
+    let title=item.title;
+    if("original_title" in item ){
+        title=item.original_title;
+    }
+    movies_series+=title
+})
+// list2.map((item)=>{
+//     movies_series+=item.title
+// })
+// airing_today.map((item)=>{
+//     movies_series+=item.original_name
+// })
+// ontheair.map((item)=>{
+//     if(item.id!=233952 || item.id!=91759 || item.id!=132544)
+//     movies_series+=item.original_name
+// })
 
-  movies_series+="manjummel boysmirzapurdarkBahubali 2: The Conclusion"
+
+  movies_series+="manjummel boysmirzapurdarkBahubali 2: The ConclusionSex EducationStranger ThingsAaveshamPremalu"
   moviesseries(movies_series);
-    let twomovies = getting2movies(list1);
+    
     const list11 = list1.slice(0, 4);
     const list22 = list2.slice(5, 9);
     function setless1() {
@@ -41,10 +63,17 @@ function Home() {
     }
     
     const[playmovie,setPlayMovie]=useState(false);
-    function playingmovie(){
+    const[continuelist,setContinueList]=useState();
+    const[continuewatch,setContinueWatch]=useState(false);
+    function playingmovie(name,image){
         setPlayMovie(!playmovie);
-        
-    }    
+        axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+            user_mail:userobj.mail,
+            video_type:"movie",
+            movie_name:name,
+            movie_image:image
+        })        
+    }
     function stopplayingmovie(){
         setPlayMovie(!playmovie);
     }
@@ -57,8 +86,8 @@ function Home() {
                     <div className='row' style={{ marginLeft: "0", marginRight: "0" }}>
                         <div className='col-md-6 text-light'>
                             <p className='text-light' >New Trailers</p>
-                            <Trailer name={twomovies[0]} image={twomovies[2]} />
-                            <Trailer name={twomovies[1]} image={twomovies[3]} />
+                            <Trailer name="Harom Hara" image={haromhara} />
+                            <Trailer name="Maname" image={maname} />
                         </div>
 
                         <div className='col-md-6'>

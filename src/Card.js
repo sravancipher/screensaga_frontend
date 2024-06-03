@@ -25,10 +25,7 @@ function Card({ image, name,playingmovie}) {
     const[video,setVideo]=useState(false);
     const[videoid,setVideoId]=useState();
     async function playtrailer(e,moviename){
-
         e.preventDefault();
-        // const response = await fetch('/utubeurls_api.json');
-        // const response=await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${moviename} movie telugu%20trailer&type=video&key=AIzaSyDaIEeVUVuzz84Il7Yi1jar4Mz30J6A2KQ`)
         const options = {
             method: 'GET',
             url: 'https://youtube-data8.p.rapidapi.com/search/',
@@ -68,7 +65,7 @@ function Card({ image, name,playingmovie}) {
                 <div className='d-grid gap-2 '>
                 <div className='btn-group'>
                     <button className='btn text-light' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid",fontSize:"15px"}} onClick={(e)=>{playtrailer(e,name)}}>Watch Trailer <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></button>
-                    <button className='btn text-light' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid",fontSize:"15px"}} onClick={()=>{playingmovie(name,image)}}>Watch Movie <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></button>
+                    <button className='btn text-light' style={{backgroundColor:"transparent",borderColor:"white",border:"2px solid",fontSize:"15px"}} onClick={()=>{playingmovie(name,image)}}>Watch Now <PlayCircleFilledIcon style={{ marginBottom: "2px" }} /></button>
                     </div>
                     {
                         moviestring.includes(name) ? <button className='btn btn-danger' onClick={(e) => { removewatchlist(e, name, userobj.mail) }}>Remove From Watch Later <DeleteIcon sx={{ fontSize: "20px", marginBottom: "3px" }} /></button>

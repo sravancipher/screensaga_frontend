@@ -32,7 +32,6 @@ function Movies(){
     const url2="https://api.themoviedb.org/3/movie/now_playing?&api_key=bcf371704c5b5986177c0d72527ae0a6&language=en-US&page=1";
     let list1=useApi(url1);
     let list2=useApi(url2);
-    
     list1=list1.slice(11,15);
     list2=list2.slice(15,19);
     const[playmovie,setPlayMovie]=useState(false);
@@ -46,12 +45,6 @@ function Movies(){
             movie_name:name,
             movie_image:image
         })
-        .then(()=>{
-            // setContinueList([{name:name,image:image}]);
-            // console.log("continue list",continuelist)
-        }        
-        );
-        
     }    
     useEffect(()=>{
         getcontinuewatchlist();
@@ -93,16 +86,16 @@ function Movies(){
                         continuewatch?<><div style={{marginBottom:"25px"}}><p className='text-light' >Popular Watching</p>
                         <Continue name="Manjummel Boys" image={manjummel} minh="150px" maxh="150px" key="3" btntext="Watch Now"/>
                         </div>
-                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching"/></>
+                        <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                         :<><p className='text-light' >Popular Watching</p>
-                        <Continue name="Manjummel Boys" image={manjummel} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching"/></>
+                        <Continue name="Manjummel Boys" image={manjummel} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                     }
                     
                     </div>
 
                     <div className='col-md-6'>
                         <p className='text-light' >Watch the Latest</p>
-                        <Watch_the_latest playingmovie={playingmovie} name="Avesham" image={avesham} key ="1" ht="150px" t="10px"/>
+                        <Watch_the_latest playingmovie={playingmovie} name="Aavesham" image={avesham} key ="1" ht="150px" t="10px"/>
                         <Watch_the_latest playingmovie={playingmovie} name="Premalu" image={premalu} key ="2" ht="150px" t="10px"/>
                     </div>
                 </div>
