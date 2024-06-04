@@ -8,9 +8,9 @@ function PlayWebseries({ stopplayingmovie, image, name }) {
 
         <>
             <div className='' style={{ position: "absolute", top: "0px" }}>
-                <img src={image} style={{ width: "100vw", height: "100vh", zIndex: "-1" }}></img>
+                <img className="seriesimage" src={image} style={{ width: "100vw", height: "100vh" }}></img>
                 <div className='colorapply'></div>
-                <div className="row" style={{ position: "absolute", top: "40%", width: "100vw" }}>
+                <div className="row selectiondisplay" >
                     <div className="col-md-1 col-2"></div>
                     <div className="col-md-3 col-8">
                         <form>

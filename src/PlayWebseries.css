@@ -46,4 +46,40 @@ option{
         top:0
     }
 }
+@media(min-width:782px){
+    .selectiondisplay{
+        position: absolute;
+        width: 100vw;
+        top:40%
+    }
+}
+@media(max-width:781px){
+    .selectiondisplay{
+        position: absolute;
+        width: 100vw;
+        
+        bottom: 10%;
+        
+        
+        
+        align-content: center;
+
+    }
+}
+/* @media(min-width:782px){
+    .seriesimage{
+        
+        width: 100vw;
+        height: 100vh;
+    }
+}
+@media(max-width:781px){
+    .seriesimage{   
+        width: 100vw;
+        height: 100vh;
+        
+    }
+} */
+/* style={{ position: "absolute", top: "40%", width: "100vw" }} */
+/* style={{ width: "100vw", height: "100vh" }} */
 /* style={{background:"linear-gradient(to left,rgba(255, 126, 95, 0),rgba(0, 0, 0, 0.8), black)",width:"100vw",height:"100vh",position:"absolute",top:0}} */
