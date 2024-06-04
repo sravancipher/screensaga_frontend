@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './Routing.css'
+import $ from 'jquery';
 import Home from './Home'
 import Movies from './Movies'
 import Webseries from './Webseries'
@@ -130,6 +131,15 @@ function Routings() {
 }
 
 function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settinglocalstorage}) {
+  $('.nav-link').on('click', function () {
+    $('.navbar-collapse').slideUp("slow");
+  });
+  $(".navbar-toggler").on('click',function(){
+    $(".navbar-collapse").slideDown("slow");
+  })
+  $(".navbar-brand").on('click',function(){
+    $(".navbar-collapse").slideUp("slow");
+  })
   const [input, setInput] = useState();
   const [searchinput, setSearchInput] = useState("");
   const [opdata, setOpData] = useState();
@@ -194,10 +204,10 @@ function Menubar({ watchlistdata, removewatchlist, movies_series ,run,settingloc
     showSkipButton={true}
     callback={settinglocalstorage}/>
       <div className='d-flex'>
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1 navbar-dismissable" style={{ borderBottom: "none" }} >
+        <nav className="navbar navbar-expand-md bg-dark navbar-dark flex-grow-1" style={{ borderBottom: "none" }} >
           <div className="container-fluid ">
             <a className="navbar-brand   text-light " style={{ fontFamily: "lucida handwriting" }}>ScreenSaga</a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-dismiss="navbar" data-bs-target="#moviemenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#oviemenu" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="moviemenu">

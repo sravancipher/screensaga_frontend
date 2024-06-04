@@ -6,7 +6,7 @@ function Playingvideo({videoid}){
     return(
         <>
          <div className="" >
-         <iframe src={videourl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; " width="100%" allowFullScreen style={{minHeight: "195px", maxHeight: "195px"}}></iframe>
+         <iframe src={videourl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; " width="100%" allowFullScreen style={{minHeight: "190px", maxHeight: "190px"}}></iframe>
          </div>
         </>
     )
