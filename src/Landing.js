@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 import Routings from "./Routings"
 import Landingpage from "./Landingpage";
 import { BrowserRouter, Routes,Route, Outlet, useParams } from "react-router-dom";
+import Footer from "./Footer";
 export const homecontext=createContext();
 export const userobjcontext=createContext();
 function Landing() {
@@ -19,6 +20,7 @@ function Landing() {
         <>  {
             home?<userobjcontext.Provider value={{userobj,sethome1}}><Routings/></userobjcontext.Provider>:<homecontext.Provider value={sethome}><Landingpage/></homecontext.Provider>
         }    
+        
         </>
     )
 }

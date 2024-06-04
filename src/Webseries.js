@@ -15,6 +15,7 @@ import PlayMovie from './PlayMovie';
 import { userobjcontext } from './Landing';
 import axios from 'axios';
 import PlayWebseries from './PlayWebseries';
+import Footer from './Footer';
 function Webseries() {
     const{userobj}=useContext(userobjcontext);
     const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
@@ -140,6 +141,7 @@ function Webseries() {
                 <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                 </span>
               )}
+              <Footer/>
         </div>
         }
         </>

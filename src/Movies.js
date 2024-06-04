@@ -17,6 +17,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import PlayMovie from './PlayMovie';
 import { userobjcontext } from './Landing';
 import axios from 'axios';
+import Footer from './Footer'
 function Movies(){
     const{userobj}=useContext(userobjcontext)
     const {watchdata,showScrollTop,scrollToTop} = useContext(watchlaterdbdata);
@@ -132,6 +133,7 @@ function Movies(){
                 <ArrowCircleUpIcon sx={{fontSize:"40px"}}/>
                 </span>
               )}
+              <Footer/>
         </div>
         }
         

@@ -16,6 +16,7 @@ import { userobjcontext } from './Landing';
 import axios from 'axios';
 import haromhara from './images/harom hara.jpg'
 import maname from './images/maname.webp'
+import Footer from './Footer';
 function Home() {
     const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
     const{userobj}=useContext(userobjcontext);
@@ -123,6 +124,7 @@ function Home() {
                     }
                 </div>
                 <Contact/>
+                
                 <div className='container'>
                 {showScrollTop && (
                     <span  type="button" className="text-danger" onClick={scrollToTop} style={{position:"fixed",bottom:"0",right:"0"}}>
@@ -130,6 +132,7 @@ function Home() {
                     </span>
                   )}
                   </div>
+                  <Footer/>
             </div>  
             }
             
