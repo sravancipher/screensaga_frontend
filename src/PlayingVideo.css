@@ -1,0 +1,10 @@
+@media (min-width:782px){
+    .trailerframe{
+        height:225px;
+    }
+}
+@media (max-width:781px){
+    .trailerframe{
+        height:165px;
+    }
+}
