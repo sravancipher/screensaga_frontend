@@ -87,7 +87,7 @@ function Movies(){
                         </div>
                         <Continue  name={continuelist.name} image={continuelist.image} minh="150px" maxh="150px" key="4" btntext="Continue Watching" playingmovie={playingmovie}/></>
                         :<><p className='text-light' >Popular Watching</p>
-                        <Continue name="Manjummel Boys" image={manjummel} minh="325px" maxh="325px" top="180px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
+                        <Continue name="Manjummel Boys" image={manjummel} minh="325px" maxh="325px" top="185px" key="3" btntext="Continue Watching" playingmovie={playingmovie}/></>
                     }
                     
                     </div>
