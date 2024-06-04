@@ -29,8 +29,8 @@ function PlayWebseries({ stopplayingmovie, image, name }) {
                             </select>
 
                         </form>
-                        <button className='btn text-light' onClick={()=>{stopplayingmovie()}}><ArrowBackOutlinedIcon/><b>Back</b></button>
-                        <button className="btn btn-danger w-100 my-2" onClick={() => { setAlert(true) }}>{name} <PlayCircleFilledIcon /></button>
+                        <button className='btn text-light' onClick={()=>{stopplayingmovie()}} style={{left:0,margin:0,padding:0}}><ArrowBackOutlinedIcon/>Back</button>
+                        <button className="btn btn-danger w-100 my-2" onClick={() => { setAlert(true) }} >{name} <PlayCircleFilledIcon /></button>
                         {alert && <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             <strong>Attention!</strong> We're sorry, but the episode cannot be played right now.</div>
