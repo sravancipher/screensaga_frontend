@@ -1,0 +1,10 @@
+@media(min-width:782px){
+    .landingdisplay{
+        top:150px;
+    }
+}
+@media(max-width:781px){
+    .landingdisplay{
+        top:90px;
+    }
+}
