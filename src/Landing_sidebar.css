@@ -1,0 +1,14 @@
+@media(min-width:782px){
+    .landinglogo{
+        width:90px;
+        margin-top: -10px;
+        
+    }
+}
+@media(max-width:781px){
+    .landinglogo{
+        width:50px;
+        margin-top: -4px;
+        
+    }
+}
