@@ -15,7 +15,8 @@ import './Home.css'
 import { userobjcontext } from './Landing';
 import axios from 'axios';
 import haromhara from './images/harom hara.jpg'
-import maname from './images/maname.webp'
+// import maname from './images/maname.webp'
+import kalki from './images/kalki.jpg'
 import Footer from './Footer';
 function Home() {
     const {watchdata,showScrollTop,scrollToTop,moviesseries} = useContext(watchlaterdbdata);
@@ -88,7 +89,7 @@ function Home() {
                         <div className='col-md-6 text-light'>
                             <p className='text-light' >New Trailers</p>
                             <Trailer name="Harom Hara" image={haromhara} />
-                            <Trailer name="Maname" image={maname} />
+                            <Trailer name="Kalki 2898 AD" image={kalki} />
                         </div>
 
                         <div className='col-md-6'>
