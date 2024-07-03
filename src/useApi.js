@@ -10,17 +10,16 @@ function useApi(url){
         try{
             let res=await axios.get(url);
             let data=res.data.results;
-            if(url.includes("cartoons")){
-                updateList(data)
-            }else{
+            // if(url.includes("cartoons")){
+            //     updateList(data)
+            // }else{
                 let filteredMovies = data.filter(movie => movie.id !== 63376 && movie.id !== 36361 && movie.id!==264306)
                 updateList(filteredMovies)
-            }
+            // }
         }
         catch{
             return [];
         }
-        
         
     }
     return list;

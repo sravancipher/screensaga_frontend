@@ -32,6 +32,16 @@ function Home() {
     let airing_today = useApi(airing_todayurl);
     let ontheair = useApi(ontheairurl);
     let movies_series;
+    // list2.map((item)=>{
+    //     movies_series+=item.title
+    // })
+    // airing_today.map((item)=>{
+    //     movies_series+=item.original_name
+    // })
+    // ontheair.map((item)=>{
+    //     if(item.id!=233952 || item.id!=91759 || item.id!=132544)
+    //     movies_series+=item.original_name
+    // })
     const combined=[...list1,...list2,...ontheair,...airing_today]
     combined.map((item)=>{
     let title=item.title;
@@ -40,17 +50,6 @@ function Home() {
     }
     movies_series+=title
 })
-// list2.map((item)=>{
-//     movies_series+=item.title
-// })
-// airing_today.map((item)=>{
-//     movies_series+=item.original_name
-// })
-// ontheair.map((item)=>{
-//     if(item.id!=233952 || item.id!=91759 || item.id!=132544)
-//     movies_series+=item.original_name
-// })
-
 
   movies_series+="manjummel boysmirzapurdarkBahubali 2: The ConclusionSex EducationStranger ThingsAaveshamPremalu"
   moviesseries(movies_series);
@@ -69,7 +68,9 @@ function Home() {
     const[continuewatch,setContinueWatch]=useState(false);
     function playingmovie(name,image){
         setPlayMovie(!playmovie);
-        axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+        
+        // axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+            axios.post("http://localhost:8081/user/addcontinuewatch",{
             user_mail:userobj.mail,
             video_type:"movie",
             movie_name:name,
@@ -141,3 +142,7 @@ function Home() {
     )
 }
 export default Home;
+
+    
+    
+    

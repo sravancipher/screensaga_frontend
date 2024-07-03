@@ -1,8 +1,7 @@
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useState} from 'react'
 import {homecontext} from './Landing.js'
 import axios from 'axios'
 import Changepswd from './Changepswd.js';
-
 function Loginform({changetosignup}){
    const[forgotpswd,setForgotPassword]=useState(false);
    function setforgotpassword(){
@@ -16,7 +15,8 @@ function Loginform({changetosignup}){
     async function handleSignUp(e){
         e.preventDefault();
       
-       let url=`https://screensagadb.up.railway.app/user/login/${user_mail}/${user_pswd }`
+      //  let url=`https://screensagadb.up.railway.app/user/login/${user_mail}/${user_pswd }`
+        let url=`http://localhost:8081/user/login/${user_mail}/${user_pswd }`
         let res=await axios.get(url,{
             
               header:{

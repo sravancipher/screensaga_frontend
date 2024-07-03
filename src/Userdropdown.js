@@ -58,7 +58,9 @@ function Userdropdown({ watchlistdata, removewatchlist }) {
     e.preventDefault();
     const userconfirmation=window.confirm("Deleting your account will erase all your data permanently. Are you sure you want to proceed?");
     if(userconfirmation){
-      axios.delete(`https://screensagadb.up.railway.app/user/delete/${userobj.mail}`)
+      
+      // axios.delete(`https://screensagadb.up.railway.app/user/delete/${userobj.mail}`)
+      axios.delete(`http://localhost:8081/user/delete/${userobj.mail}`)
       .then(sethome1())
       
     }else{

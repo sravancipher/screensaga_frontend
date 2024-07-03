@@ -41,7 +41,9 @@ function Movies(){
     function playingmovie(name,image){
         console.log("called");
         setPlayMovie(!playmovie);
-        axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+        
+        // axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+            axios.post("http://localhost:8081/user/addcontinuewatch",{
             user_mail:userobj.mail,
             video_type:"movie",
             movie_name:name,
@@ -53,7 +55,9 @@ function Movies(){
     },[continuewatch,continuelist,playmovie])
     async function getcontinuewatchlist(){
         const video_type="movie";
-        await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
+        
+        // await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
+        await axios.get(`http://localhost:8081/user/getcontinuewatch/${userobj.mail}/${video_type}`)
         .then((res)=>{
             if(res.data!==''){
                 console.log("result",res)

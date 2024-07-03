@@ -6,7 +6,9 @@ function Contact(){
     const[comment,setComment]=useState("");
     async function addcomment(e){
       e.preventDefault();
-      axios.post(`https://screensagadb.up.railway.app/user/addcomment` ,{
+      
+      // axios.post(`https://screensagadb.up.railway.app/user/addcomment` ,{
+        axios.post(`http://localhost:8081/user/addcomment` ,{
         usermail: userobj.mail,
         usercomment: comment
      }, {

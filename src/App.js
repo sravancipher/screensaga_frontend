@@ -8,12 +8,28 @@ function App() {
     {
       <Landing />
     }
-    
-    
     </>
     
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default App;
 // File: App.js
