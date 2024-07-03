@@ -43,7 +43,9 @@ function Webseries() {
         setName(name);
         setImage(image);
         setPlayWebseries(!playwebseries);
-        axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+        
+        // axios.post("https://screensagadb.up.railway.app/user/addcontinuewatch",{
+            axios.post("http://locahost:8081/user/addcontinuewatch",{
             user_mail:userobj.mail,
             video_type:"webseries",
             movie_name:name,
@@ -61,7 +63,8 @@ function Webseries() {
     },[continuewatch,continuelist,playwebseries])
     async function getcontinuewatchlist(){
         const video_type="webseries";
-        await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
+        // await axios.get(`https://screensagadb.up.railway.app/user/getcontinuewatch/${userobj.mail}/${video_type}`)
+        await axios.get(`http://localhost:8081/user/getcontinuewatch/${userobj.mail}/${video_type}`)
         .then((res)=>{
             // setContinueList([{name:name,image:image}]);
             // console.log("continue list",continuelist)
