@@ -126,7 +126,6 @@ function Routings() {
             <Route exact path='/' element={<Home />} />
             <Route path='/movies' element={<Movies />}></Route>
             <Route path='/webseries' element={<Webseries />}></Route>
-            <Route path='/tv' element={<Tv />}></Route>
 
           </Routes>
         </watchlaterdbdata.Provider>
